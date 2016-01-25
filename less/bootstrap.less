@@ -1,0 +1,117 @@
+/*!
+ * Bootstrap v3.3.6 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+// Core variables and mixins
+@import "core/variables.less";
+@import "core/mixins.less";
+// Reset and dependencies
+@import "core/normalize.less";
+// @import "core/print.less";
+// @import "core/glyphicons.less";
+// Core CSS
+@import "core/scaffolding.less";
+// @import "core/type.less";
+// @import "core/code.less";
+@import "core/grid.less";
+// @import "core/tables.less";
+// @import "core/forms.less";
+// @import "core/buttons.less";
+// Components
+// @import "components/component-animations.less";
+// @import "components/dropdowns.less";
+// @import "components/button-groups.less";
+// @import "components/input-groups.less";
+// @import "components/navs.less";
+// @import "components/navbar.less";
+// @import "components/breadcrumbs.less";
+// @import "components/pagination.less"; 
+// @import "components/pager.less";
+// @import "components/labels.less";
+// @import "components/badges.less";
+// @import "components/jumbotron.less";
+// @import "components/thumbnails.less";
+// @import "components/alerts.less";
+// @import "components/progress-bars.less";
+// @import "components/media.less";
+// @import "components/list-group.less";
+// @import "components/panels.less";
+// @import "components/responsive-embed.less";
+// @import "components/wells.less";
+// @import "components/close.less";
+// Components w/ JavaScript
+// @import "components/modals.less";
+// @import "components/tooltip.less";
+// @import "components/popovers.less";
+// @import "components/carousel.less";
+// Utility classes
+@import "utilities/utilities.less";
+@import "utilities/responsive-utilities.less";
+// addons
+@import "addons/animations.less";
+
+/**
+* Defaults
+*/
+
+
+/**
+* Structure
+*/
+
+html {
+    transition: opacity 1500ms ease-in-out;
+}
+
+
+/**
+* Helpers 
+*/
+
+.no-js {
+    disply: none;
+    opacity: 0;
+}
+
+
+/**
+* Introduction  
+*/
+
+#intro {
+    background: url('../images/bg.png') no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 768px;
+    object {
+        display: block;
+        margin: 0 auto;
+        padding: 12% 0 0 0;
+    }
+    #scrollDown {
+        display: block;
+        border: solid 1px #fff;
+        position: absolute;
+        bottom: 45px;
+        text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 16px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 48px;
+        height: 48px;
+        padding: 12px 0 0 0;
+        border-radius: 24px;
+        font-family: 'Lato', sans-serif;
+        transition: all 200ms ease 0s;
+        &:hover {
+            background: #fff;
+            color: #6C6A68;
+        }
+    }
+}

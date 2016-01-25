@@ -60,7 +60,8 @@ module.exports = (grunt) ->
 				]
 				cwd: './'
 				exclude: [
-					"bin/materialize.css"
+					"dist/jquery.js"
+					"dist/js/bootstrap.js"
 				]
 				ignorePath: /^(\.\.\/\.\.\/)/
 
@@ -75,10 +76,20 @@ module.exports = (grunt) ->
 				]
 
 
+		# compile less to css
+		less:
+			dev:
+				options:
+					compress: false
+				files: [
+					"public<%= path.sep %>css<%= path.sep %>app.css" : "less<%= path.sep %>bootstrap.less",
+				]
+
+
 		# watches files and runs tasks when the files change
 		watch:
 			options:
-				livereload: false
+				livereload: true
 
 			sassfiles:
 				files: [
@@ -87,6 +98,14 @@ module.exports = (grunt) ->
 				tasks: ['sass:dev']
 				options:
 					spawn: false
+
+			lessfiles:
+				files: [
+					"less<%= path.sep %>**<%= path.sep %>*.less"
+				]
+				tasks: ['less:dev'] 
+				options:
+					spawn: false					
 
 			jadefiles:
 				files: [
@@ -99,7 +118,7 @@ module.exports = (grunt) ->
 				files: [
 					"public<%= path.sep %>js<%= path.sep %>**<%= path.sep %>*.js"
 				]					
-				options:
+				options: 
 					spawn: false
 
 
@@ -201,5 +220,5 @@ module.exports = (grunt) ->
 
 	# register our grunt tasks
 	grunt.registerTask("default", ["availabletasks"])
-	grunt.registerTask("serve-dev", ["string-replace:dev", "wiredep", "sass:dev", "concurrent:dev"])
+	grunt.registerTask("serve-dev", ["wiredep", "less:dev", "concurrent:dev"])
 	grunt.registerTask("build", ["bower_concat:build", "uglify:build", "cssmin:build", "string-replace:build", "nodemon"])

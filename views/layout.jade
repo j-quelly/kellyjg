@@ -2,6 +2,19 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Serif:700,400", rel="stylesheet", type="text/css")
+    script.
+        document.documentElement.className = 'no-js';    
+
+    // bower:css
+    // endbower
+
+    link(rel="stylesheet", href="css/app.css")
   body
     block content
+
+    // bower:js
+    // endbower
+    
+    script(src='js/app.js')
+    script(src='//localhost:35729/livereload.js')

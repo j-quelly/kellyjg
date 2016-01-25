@@ -5,5 +5,6 @@
 
 ## Changelog
 - v1.0.0 (1/24/2016)
-	- initial commit	
-	-
+	- initial commit
+	- adds bootstrap and animate.css
+	- begins landing section
