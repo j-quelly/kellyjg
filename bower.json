@@ -1,23 +1,23 @@
 {
-  "name": "kellyjg",
-  "version": "3.4.3",
-  "description": "Vector & Bitmap PLAR",
-  "authors": [
-    "Jamie Kelly <jamie@studio174.ca>"
-  ],
-  "homepage": "www.kellyjg.com",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "bootstrap": "~3.3.6"
-  },
-  "devDependencies": {
-    "animate.css": "~3.5.1"
-  }
+    "name": "kellyjg",
+    "version": "1.1.0",
+    "description": "Vector & Bitmap PLAR",
+    "authors": [
+        "Jamie Kelly <jamie@studio174.ca>"
+    ],
+    "homepage": "www.kellyjg.com",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap": "~3.3.6"
+    },
+    "devDependencies": {
+        "animate.css": "~3.5.1"
+    }
 }
