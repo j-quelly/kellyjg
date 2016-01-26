@@ -5,7 +5,7 @@
     "authors": [
         "Jamie Kelly <jamie@studio174.ca>"
     ],
-    "homepage": "www.kellyjg.com",
+    "homepage": "https://github.com/studio174/kellyjg",
     "private": true,
     "ignore": [
         "**/.*",
