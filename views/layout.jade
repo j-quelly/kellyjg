@@ -2,6 +2,9 @@ doctype html
 html
   head
     title= title
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
     link(href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Serif:700,400", rel="stylesheet", type="text/css")
     script.
         document.documentElement.className = 'no-js';    
@@ -14,6 +17,8 @@ html
     block content
 
     // bower:js
+    script(src='../bower_components/jquery/dist/jquery.js')
+    script(src='../bower_components/bootstrap/dist/js/bootstrap.js')
     // endbower
     
     script(src='js/app.js')
