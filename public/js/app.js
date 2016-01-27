@@ -1,3 +1,8 @@
+/**
+ * jQuery free js
+ */
+
+
 window.onload = function() {
     // get window height and adjust introduction panel
     sizeIntro();
@@ -8,12 +13,13 @@ window.onload = function() {
     H.style.opacity = 1;
 
     // add class to intro logo
-    document.getElementById('jk-logo').className = 'logo-animated logo-custom';
-    document.getElementById('jk-bracket').className = 'logo-animated bracket-custom';
+    document.getElementById('jk-logo').className = 'animation logo-custom';
+    document.getElementById('jk-bracket').className = 'animation bracket-custom';
 
 };
 
 window.onresize = function() {
+    // get window height and adjust introduction panel
     sizeIntro();
 };
 
@@ -23,47 +29,99 @@ window.onresize = function() {
  */
 
 // when the user clicks on the scroll down button
-var goBtn = document.getElementById('scrollDown');
+var goBtn = document.getElementById('go');
 goBtn.onclick = function() {
-    window.smoothScroll('navbar');
+    smoothScroll('about');
 };
+
+// when the user scrolls to a certain point
+window.addEventListener("scroll", function() {
+    var scrollDistance = window.innerHeight;
+    if (window.scrollY > scrollDistance) {
+        fixNavbar(true);
+    } else {
+        fixNavbar(false);
+    }
+}, false);
 
 
 /**
  * Functions
  */
 
-// get window height and adjust introduction panel
+// a function to make the navbar fixed
+function fixNavbar(arg) {
+    // cache elements
+    var navbar = document.getElementById('navbar');
+    var body = document.getElementsByTagName('body')[0];
+
+    if (arg === true) {
+        navbar.className = 'navbar navbar-default navbar-fixed-top animation';
+        body.className = 'fixed-navbar';
+    } else {
+        navbar.className = 'navbar navbar-default';
+        body.className = '';
+    }
+    console.log('make u myne');
+}
+
+// get window height and adjust introduct ion panel
 function sizeIntro() {
     var wH = window.innerHeight;
     document.getElementById('intro').style.height = wH + 'px';
 }
 
+// get current y position
+function currentYPosition() {
+    // Firefox, Chrome, Opera, Safari
+    if (self.pageYOffset) return self.pageYOffset;
+    // Internet Explorer 6 - standards mode
+    if (document.documentElement && document.documentElement.scrollTop)
+        return document.documentElement.scrollTop;
+    // Internet Explorer 6, 7 and 8
+    if (document.body.scrollTop) return document.body.scrollTop;
+    return 0;
+}
+
+// get element Y position
+function elmYPosition(eID) {
+    var elm = document.getElementById(eID);
+    var y = elm.offsetTop;
+    var node = elm;
+    while (node.offsetParent && node.offsetParent != document.body) {
+        node = node.offsetParent;
+        y += node.offsetTop;
+    }
+    return y;
+}
+
 // scroll to element
-window.smoothScroll = function(target) {
-    alert();
-    var scrollContainer = document.getElementById(target);
-    do { //find scroll container
-        scrollContainer = scrollContainer.parentNode;
-        if (!scrollContainer) return;
-        scrollContainer.scrollTop += 1;
-    } while (scrollContainer.scrollTop === 0);
-
-    var targetY = 0;
-    do { //find the top of target relatively to the container
-        if (target == scrollContainer) break;
-        targetY += target.offsetTop;
-    } while (target = target.offsetParent);
-
-    scroll = function(c, a, b, i) {
-        i++;
-        if (i > 30) return;
-        c.scrollTop = a + (b - a) / 30 * i;
-        setTimeout(function() {
-            scroll(c, a, b, i);
-        }, 20);
-    };
-
-    // start scrolling
-    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
-};
+function smoothScroll(eID) {
+    var startY = currentYPosition();
+    var stopY = elmYPosition(eID);
+    var distance = stopY > startY ? stopY - startY : startY - stopY;
+    if (distance < 100) {
+        scrollTo(0, stopY);
+        return;
+    }
+    var speed = Math.round(distance / 100);
+    if (speed >= 20) speed = 20;
+    var step = Math.round(distance / 25);
+    var leapY = stopY > startY ? startY + step : startY - step;
+    var timer = 0;
+    if (stopY > startY) {
+        for (var i = startY; i < stopY; i += step) {
+            setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+            leapY += step;
+            if (leapY > stopY) leapY = stopY;
+            timer++;
+        }
+        return;
+    }
+    for (var j = startY; j > stopY; j -= step) {
+        setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
+        leapY -= step;
+        if (leapY < stopY) leapY = stopY;
+        timer++;
+    }
+}

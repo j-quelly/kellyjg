@@ -6733,17 +6733,17 @@ button.close {
  * Copyright (c) 2016 Daniel Eden
  */
 /********************************/
-.logo-animated {
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
+.animation {
+  -webkit-animation-duration: 1.25s;
+  animation-duration: 1.25s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 @keyframes logo-custom {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
+    -webkit-transform: translate3d(0, -70px, 0);
+    transform: translate3d(0, -70px, 0);
   }
   50% {
     opacity: 1;
@@ -6752,8 +6752,8 @@ button.close {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate3d(-104px, 0, 0);
-    transform: translate3d(-104px, 0, 0);
+    -webkit-transform: translate3d(-102px, 0, 0);
+    transform: translate3d(-102px, 0, 0);
   }
 }
 .logo-custom {
@@ -6773,48 +6773,42 @@ button.close {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate3d(56px, 0, 0);
-    transform: translate3d(56px, 0, 0);
+    -webkit-transform: translate3d(92px, 0, 0);
+    transform: translate3d(92px, 0, 0);
   }
 }
 .bracket-custom {
   -webkit-animation-name: bracket-custom;
   animation-name: bracket-custom;
 }
-@keyframes text-custom {
+@keyframes type-custom {
   0% {
     opacity: 0;
-  }
-  62% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-.text-custom {
-  -webkit-animation-name: text-custom;
-  animation-name: text-custom;
-}
-@keyframes type {
-  from {
-    width: 0;
-  }
-}
-@keyframes type2 {
-  0% {
     width: 0;
   }
   50% {
+    opacity: 1;
     width: 0;
   }
   100% {
+    opacity: 1;
     width: 100;
   }
 }
-@keyframes blink {
+@keyframes blink-custom {
   to {
     opacity: .0;
+  }
+}
+@keyframes navbar-custom {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
   }
 }
 /**
@@ -6824,7 +6818,7 @@ button.close {
 * Structure
 */
 html {
-  transition: opacity 200ms ease;
+  transition: opacity 150ms ease-out;
 }
 /**
 * Helpers 
@@ -6851,39 +6845,39 @@ html {
   right: 0;
   margin: 0 auto;
   top: 200px;
-  width: 56px;
-  height: 50.5px;
+  width: 42px;
+  height: 45px;
 }
 #intro #jk-bracket {
   position: absolute;
-  left: 121px;
+  left: 20px;
   right: 0;
   margin: 0 auto;
-  top: 200px;
-  width: 32.5px;
-  height: 50.5px;
+  top: 199px;
+  width: 42px;
+  height: 46px;
 }
 #intro h1 {
-  font-family: 'Lato', sans-serif;
   display: none;
   position: absolute;
   color: #fff;
+  font-family: 'Lato', sans-serif;
   font-size: 18px;
   white-space: nowrap;
   overflow: hidden;
-  width: 160px;
+  width: 176px;
   display: block;
-  top: 212px;
-  left: 0;
+  top: 211px;
+  left: 50%;
   right: 0;
-  margin: 0 auto;
-  animation: type 1s steps(60, end);
+  margin: 0 0 0 -82px;
+  animation: type-custom 2.5s steps(60, end);
 }
 #intro h1 span {
-  margin: 0 0 0 5px;
-  animation: blink 1s infinite;
+  margin: 0 0 0 4px;
+  animation: blink-custom 1.5s infinite;
 }
-#intro #scrollDown {
+#intro #go {
   display: block;
   border: solid 1px #fff;
   position: absolute;
@@ -6907,7 +6901,7 @@ html {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-#intro #scrollDown:hover {
+#intro #go:hover {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -o-transform: scale(1.2);
@@ -6917,32 +6911,75 @@ html {
 /**
 * Primary Navigation
 */
+nav {
+  height: 70px;
+  display: none;
+  opacity: 0;
+}
+nav #logo {
+  width: 42px;
+  height: 45px;
+  margin: 12px 0 0 0;
+}
 nav ul {
   list-style: none;
   float: right;
-  margin: 20px 0 0 0;
+  margin: 19px 0 0 0;
+  padding: 0;
 }
 nav ul li {
   float: left;
-  width: 90px;
+  width: 80px;
   text-align: right;
+  font-family: 'Lato', sans-serif;
+  font-size: 18px;
+}
+nav ul li a {
+  color: #000;
+}
+nav ul li a:hover {
+  text-decoration: none;
 }
 .navbar {
   background: #fff;
   margin: 0;
 }
+.navbar-fixed-top {
+  display: block;
+  -webkit-animation-name: navbar-custom;
+  animation-name: navbar-custom;
+}
 /**
 * About Section 
 */
 #about {
-  padding: 80px 0;
+  padding: 133.5px 0;
   background: #5278A2;
 }
 #about h2 {
   color: #fff;
-  text-align: justify;
-  font-family: 'Noto', serif;
-  line-height: 1.5;
+  font-family: 'Noto Serif', serif;
+  line-height: 56px;
+  margin: 0;
+  font-size: 28px;
+}
+#about .icon {
+  border-radius: 100%;
+  border: solid 1px #000;
+  padding: 10px;
+  width: 20px;
+  height: 20px;
+}
+/**
+* Work Experience
+*/
+#work-experience {
+  margin: 100px 0 0 0;
+}
+#work-experience h3 {
+  font-size: 28px;
+  font-family: 'Noto Serif', serif;
+  font-weight: bold;
 }
 /**
 * Custom SVG fonts
@@ -6983,6 +7020,10 @@ nav ul li {
 }
 .icon-work-experience:before {
   content: "\62";
+  font-size: 28px;
+  border: solid 1px #000;
+  border-radius: 100%;
+  padding: 10px;
 }
 .icon-development:before {
   content: "\64";

@@ -1,9 +1,11 @@
 # kellyjg
 - Bitmap & Vector PLAR
 
-### Current Version: 1.1.0
+### Current Version: 1.2.0
 
 ## Changelog
+- v1.2.0 (1/25/2016)
+	- updates styles
 - v1.1.0 (1/25/2016)
 	- adds intro animations
 	- adds vector fallback

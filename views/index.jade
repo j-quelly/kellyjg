@@ -8,43 +8,53 @@ block content
       img(src="images/bracket-white.png")
     h1.logo-animated.text-custom
       | front-end developer
-      span | 
-    a#scrollDown(href="#") Go
+      span |
+    a#go(href="javascript:void(0);") Go
 
 
-  nav.navbar.navbar-default#navbar
+  nav#navbar.navbar.navbar-default
     .container
-      ul
+      .row       
+        .col-xs-3
+          object#logo(type="image/svg+xml", data="images/jk-logo-black.svg")
+            img(src="images/jk-logo-black.png")
+        .col-xs-9
+          ul
+            li
+              a(href="#") Resume
+            li
+              a(href="#") Contact
 
 
   section#about
     .container
-      .col-lg-10.col-lg-offset-1
-        h2 Hi, I'm 
-          b Jamie Kelly
-          | , a Canadian front-end developer based in the SF Bay Area with a penchant for code.  For more than a decade I have been converting pizza and caffeine into functional websites.
+      .row
+        .col-lg-10.col-lg-offset-1.col-xs-12
+          h2 Hi, I'm 
+            b Jamie Kelly
+            | , a Canadian front-end developer based in the SF Bay Area with a penchant for code.  For more than a decade I have been converting pizza and caffeine into functional websites.
 
 
   section#work-experience
     .container
-      .col-lg-1
+      .col-lg-1.bg
         i.icon.icon-work-experience
-      .col-lg-11
+      .col-lg-11.bg
         h3 Work Experience
 
-      .col-lg-3.col-lg-offset-1
+      .col-lg-3.col-lg-offset-1.col-xs-12
         p August 2013 - Present
-      .col-lg-8
+      .col-lg-8.col-xs-12
         strong Studio 174 | Owner &amp; Full-stack Developer
-        ul
+        ul 
           li Project management
           li Graphic design, web design, &amp; development
           li Content management &amp; e-commerce development
           li Search engine optimization
 
-      .col-lg-3.col-lg-offset-1
+      .col-lg-3.col-lg-offset-1.col-xs-12
         p May 2012 - June 2013
-      .col-lg-8
+      .col-lg-8.col-xs-12
         strong Link Web Development | Full-stack Developer
         ul
           li Content management system development
@@ -53,9 +63,9 @@ block content
           li Responsive web development &amp; maintenance
           li Wordpress development
 
-      .col-lg-3.col-lg-offset-1
+      .col-lg-3.col-lg-offset-1.col-xs-12
         p April 2011 - March 2012
-      .col-lg-8
+      .col-lg-8.col-xs-12
         strong Shawn Knight Systems | PHP Programmer
         ul
           li Content management system development
@@ -95,57 +105,57 @@ block content
 
 
 
-  section#skills-techniques
-    .container
-      .col-lg-1
-        p icon
-      .col-lg-11
-        h3 Skills &amp; Techniques
+  //- section#skills-techniques
+  //-   .container
+  //-     .col-lg-1
+  //-       p icon
+  //-     .col-lg-11
+  //-       h3 Skills &amp; Techniques
 
-      .col-lg-5.col-lg-offset-1
-        p DEVELOPMENT
-        b Programming Languages
-        ul
-          li HTML5
-          li CSS 3
+  //-     .col-lg-5.col-lg-offset-1
+  //-       p DEVELOPMENT
+  //-       b Programming Languages
+  //-       ul
+  //-         li HTML5
+  //-         li CSS 3
 
-      .col-lg-5
-        p OTHER
-        b Self-Management
-        ul
-          li Manage stuff
-          li do things
-          li fail more than I succeed
+  //-     .col-lg-5
+  //-       p OTHER
+  //-       b Self-Management
+  //-       ul
+  //-         li Manage stuff
+  //-         li do things
+  //-         li fail more than I succeed
 
-      .col-lg-5.col-lg-offset-1
-        p DEVELOPMENT
-        b Programming Languages
-        ul
-          li HTML5
-          li CSS 3
+  //-     .col-lg-5.col-lg-offset-1
+  //-       p DEVELOPMENT
+  //-       b Programming Languages
+  //-       ul
+  //-         li HTML5
+  //-         li CSS 3
 
-      .col-lg-5
-        p OTHER
-        b Self-Management
-        ul
-          li Manage stuff
-          li do things
-          li paul blart
+  //-     .col-lg-5
+  //-       p OTHER
+  //-       b Self-Management
+  //-       ul
+  //-         li Manage stuff
+  //-         li do things
+  //-         li paul blart
 
 
-  section#awards-recognition
-    .container
-      .col-lg-1
-        p icon
-      .col-lg-11
-        h3 Awards &amp; Recognition
+  //- section#awards-recognition
+  //-   .container
+  //-     .col-lg-1
+  //-       p icon
+  //-     .col-lg-11
+  //-       h3 Awards &amp; Recognition
 
-      .col-lg-1.col-lg-offset-1
-        p 2010
-      .col-lg-10
-        p Scholarship from the School of Design and Visual Arts
+  //-     .col-lg-1.col-lg-offset-1
+  //-       p 2010
+  //-     .col-lg-10
+  //-       p Scholarship from the School of Design and Visual Arts
 
-      .col-lg-1.col-lg-offset-1
-        p 2010
-      .col-lg-10 
-        p Georgian College Award of Excellence in Web Design
+  //-     .col-lg-1.col-lg-offset-1
+  //-       p 2010
+  //-     .col-lg-10 
+  //-       p Georgian College Award of Excellence in Web Design
