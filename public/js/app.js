@@ -3,6 +3,11 @@
  */
 
 
+/**
+ * Events
+ */
+
+// once the entire website has loaded
 window.onload = function() {
     // get window height and adjust introduction panel
     sizeIntro();
@@ -15,18 +20,18 @@ window.onload = function() {
     // add class to intro logo
     document.getElementById('jk-logo').className = 'animation logo-custom';
     document.getElementById('jk-bracket').className = 'animation bracket-custom';
+    document.getElementById('fed').className = 'logo-animated text-custom';
 
 };
 
 window.onresize = function() {
     // get window height and adjust introduction panel
-    sizeIntro();
+    // sizeIntro();
 };
 
-
-/**
- * Events
- */
+window.addEventListener("orientationchange", function() {
+    // sizeIntro();
+}, false);
 
 // when the user clicks on the scroll down button
 var goBtn = document.getElementById('go');
@@ -62,12 +67,11 @@ function fixNavbar(arg) {
         navbar.className = 'navbar navbar-default';
         body.className = '';
     }
-    console.log('make u myne');
 }
 
 // get window height and adjust introduct ion panel
 function sizeIntro() {
-    var wH = window.innerHeight;
+    var wH = document.documentElement.clientHeight;
     document.getElementById('intro').style.height = wH + 'px';
 }
 
@@ -96,7 +100,7 @@ function elmYPosition(eID) {
 }
 
 // scroll to element
-function smoothScroll(eID) {
+function smoothScroll(eID, cb) {
     var startY = currentYPosition();
     var stopY = elmYPosition(eID);
     var distance = stopY > startY ? stopY - startY : startY - stopY;
@@ -124,4 +128,6 @@ function smoothScroll(eID) {
         if (leapY < stopY) leapY = stopY;
         timer++;
     }
+
+
 }

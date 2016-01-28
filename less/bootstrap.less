@@ -62,7 +62,7 @@
 */
 
 html {
-    transition: opacity 150ms ease-out;
+    transition: opacity 250ms;
 }
 
 
@@ -89,6 +89,7 @@ html {
     background-position: center center;
     background-size: cover;
     height: 768px;
+    position: relative;
     #jk-logo {
         position: absolute;
         left: 0;
@@ -202,6 +203,7 @@ nav {
 
 .navbar-fixed-top {
     display: block;
+    top: 0;
     -webkit-animation-name: navbar-custom;
     animation-name: navbar-custom;
 }
@@ -216,7 +218,7 @@ nav {
 */
 
 #about {
-    padding: 133.5px 0;
+    padding: 103.5px 0;
     background: #5278A2;
     h2 {
         color: #fff;
@@ -326,3 +328,18 @@ nav {
 .icon-copyright:before {
     content: "\6f";
 }
+
+
+/* Small devices (tablets, 768px and up) */
+
+@media (min-width: @screen-sm-min) {}
+
+
+/* Medium devices (desktops, 992px and up) */
+
+@media (min-width: @screen-md-min) {}
+
+
+/* Large devices (large desktops, 1200px and up) */
+
+@media (min-width: @screen-lg-min) {}

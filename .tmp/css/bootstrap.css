@@ -6836,7 +6836,6 @@ html {
   background-position: center center;
   background-size: cover;
   height: 768px;
-  position: relative;
 }
 #intro #jk-logo {
   position: absolute;
@@ -6940,7 +6939,6 @@ nav ul li a:hover {
 }
 .navbar-fixed-top {
   display: block;
-  top: 0;
   -webkit-animation-name: navbar-custom;
   animation-name: navbar-custom;
 }
@@ -6948,7 +6946,7 @@ nav ul li a:hover {
 * About Section 
 */
 #about {
-  padding: 103.5px 0;
+  padding: 133.5px 0;
   background: #5278A2;
 }
 #about h2 {
@@ -7041,6 +7039,3 @@ nav ul li a:hover {
 .icon-copyright:before {
   content: "\6f";
 }
-/* Small devices (tablets, 768px and up) */
-/* Medium devices (desktops, 992px and up) */
-/* Large devices (large desktops, 1200px and up) */
