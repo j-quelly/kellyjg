@@ -66,6 +66,24 @@ module.exports = (grunt) ->
 				ignorePath: /^(\.\.\/\.\.\/)/
 
 
+		# cleans folders for us
+		clean:
+			images:
+				src: ['public<%= path.sep %>images']
+			css:
+				src: ['public<%= path.sep %>css']
+			js:
+				src: ['public<%= path.sep %>js']
+			tmp:
+				src: ['.tmp']
+			all:
+				src: [
+					'public<%= path.sep %>css'
+					'public<%= path.sep %>images'
+					'public<%= path.sep %>js'
+				]
+
+
 		# compile sass to css
 		sass:
 			dev:
@@ -78,6 +96,17 @@ module.exports = (grunt) ->
 
 		# compile less to css
 		less:
+			vet:
+				options:
+					compress: false
+				files: [{
+					expand: true
+					cwd: 'less<%= path.sep %>'
+					src: ['*.less']
+					ext: '.css'
+					extDot: 'first'
+					dest: '.tmp<%= path.sep %>css<%= path.sep %>'  
+				}]			
 			dev:
 				options:
 					compress: false
@@ -103,7 +132,7 @@ module.exports = (grunt) ->
 				files: [
 					"less<%= path.sep %>**<%= path.sep %>*.less"
 				]
-				tasks: ['less:dev'] 
+				tasks: ['less:dev', "postcss:dist",] 
 				options:
 					spawn: false					
 
@@ -211,6 +240,35 @@ module.exports = (grunt) ->
 					]								
 
 
+		# automagically prefix our css
+		postcss:
+			options:
+				map: false,
+				processors: [
+					require('pixrem')(), # add fallbacks for rem units
+        			require('autoprefixer')({browsers: ['last 2 versions']}), # add vendor prefixes
+        		]
+			dist:
+				src: ['public<%= path.sep %>css<%= path.sep %>*.css', '!public<%= path.sep %>css<%= path.sep %>app.min.css'] 
+			vet:
+				src: ['.tmp<%= path.sep %>css<%= path.sep %>**<%= path.sep %>*.css'] 
+
+
+		# lint our css files 
+		csslint:
+			tmp:
+				options:
+					import: 2
+					csslintrc: '.csslintrc'
+				src: [
+					'.tmp<%= path.sep %>css<%= path.sep %>**<%= path.sep %>*.css'
+					'!.tmp<%= path.sep %>css<%= path.sep %>bootstrap.css'
+					'!.tmp<%= path.sep %>css<%= path.sep %>css<%= path.sep %>owl-theme.css'
+					'!.tmp<%= path.sep %>css<%= path.sep %>css<%= path.sep %>owl-carousel.css'
+					'!.tmp<%= path.sep %>css<%= path.sep %>css<%= path.sep %>jquery-filestyle.css'
+					'!.tmp<%= path.sep %>css<%= path.sep %>css<%= path.sep %>jquery-ui.css' 
+				]				
+
 
 	# require our tasks
 	require('time-grunt')(grunt);
@@ -220,5 +278,6 @@ module.exports = (grunt) ->
 
 	# register our grunt tasks
 	grunt.registerTask("default", ["availabletasks"])
-	grunt.registerTask("serve-dev", ["wiredep", "less:dev", "concurrent:dev"])
+	grunt.registerTask("serve-dev", ["wiredep", "less:dev", "postcss:dist", "concurrent:dev"])
 	grunt.registerTask("build", ["bower_concat:build", "uglify:build", "cssmin:build", "string-replace:build", "nodemon"])
+	grunt.registerTask("vetcss", ["clean:tmp", "less:vet", "postcss:vet", "csslint:tmp"])
