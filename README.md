@@ -1,9 +1,12 @@
 # kellyjg
 - Bitmap & Vector PLAR
 
-### Current Version: 0.3.0
+### Current Version: 0.4.0
 
 ## Changelog
+- v0.4.0 (1/28/2016) 
+	- adds desktop logo & animation
+	- fixes go button event event
 - v0.3.0 (1/27/2016)
 	- adds task for vetting css
 	- adds prefixes to dist css

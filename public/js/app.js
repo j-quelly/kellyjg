@@ -17,6 +17,8 @@ window.onload = function() {
     H.className = H.className.replace(/\bno-js\b/, 'js');
     H.style.opacity = 1;
 
+
+
     // add class to intro logo
     document.getElementById('jk-logo').className = 'animation logo-custom';
     document.getElementById('jk-bracket').className = 'animation bracket-custom';
@@ -27,6 +29,8 @@ window.onload = function() {
 window.onresize = function() {
     // get window height and adjust introduction panel
     // sizeIntro();
+    sizeLogo();
+
 };
 
 window.addEventListener("orientationchange", function() {
@@ -36,13 +40,14 @@ window.addEventListener("orientationchange", function() {
 // when the user clicks on the scroll down button
 var goBtn = document.getElementById('go');
 goBtn.onclick = function() {
+    // scroll to the about section
     smoothScroll('about');
 };
 
 // when the user scrolls to a certain point
 window.addEventListener("scroll", function() {
     var scrollDistance = window.innerHeight;
-    if (window.scrollY > scrollDistance) {
+    if (window.scrollY > (scrollDistance - 75)) {
         fixNavbar(true);
     } else {
         fixNavbar(false);
@@ -62,10 +67,8 @@ function fixNavbar(arg) {
 
     if (arg === true) {
         navbar.className = 'navbar navbar-default navbar-fixed-top animation';
-        body.className = 'fixed-navbar';
     } else {
         navbar.className = 'navbar navbar-default';
-        body.className = '';
     }
 }
 
@@ -130,4 +133,27 @@ function smoothScroll(eID, cb) {
     }
 
 
+}
+
+// a function to size the logo
+function sizeLogo() {
+    // get width of window
+    var wW = window.innerWidth;
+
+    // 1200 & up
+    if (wW >= 1200) {
+        console.log('large desktop');
+    }
+    // 992px and up
+    else if (wW <= 1199 && wW >= 992) {
+        console.log('desktop');
+    }
+    // 768px and up
+    else if (wW <= 991 && wW >= 768) {
+        console.log('tablet');
+    }
+    // mobile
+    else {
+        console.log('mobile');
+    }
 }
