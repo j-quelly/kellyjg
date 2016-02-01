@@ -1,11 +1,18 @@
 # kellyjg
 - Bitmap & Vector PLAR
 
-### Current Version: 0.4.0
+### Current Version: 0.5.0
 
 ## Changelog
+- v0.5.0 (1/29/2016 - 1/31/2016) 
+	- adds navbar logo animation
+	- finishes copy
+	- semantically corrects document
+	- adds animation
+	- adds more images
+	- tests vector fall back images
 - v0.4.0 (1/28/2016) 
-	- adds desktop logo & animation
+	- adds desktop logo & animation 
 	- fixes go button event event
 - v0.3.0 (1/27/2016)
 	- adds task for vetting css

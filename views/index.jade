@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  div#intro
+  header#intro
     object#jk-logo(type="image/svg+xml", data="images/jk-logo.svg")
-      img(src="images/jk-logo-white.png")
+      img(src="images/jk-logo-white@3x.png")
     object#jk-bracket(type="image/svg+xml", data="images/bracket.svg")
-      img(src="images/bracket-white.png")
+      img(src="images/bracket-white@3x.png")
     h1#fed
       | front-end developer
       span |
@@ -15,147 +15,260 @@ block content
   nav#navbar.navbar.navbar-default
     .container
       .row       
-        .col-xs-3.bg
-          object#nav-jk-logo(type="image/svg+xml", data="images/jk-logo-black.svg")
-            img(src="images/jk-logo-black.png")
-        .col-xs-9.bg
+        .col-xs-3
+          .nav-logo
+            object#nav-jk(data="images/jk-logo-black.svg", type="image/svg+xml")
+              img(src="images/jk-logo-black@1x.png")
+            object#nav-bracket(data="images/bracket-black.svg", type="image/svg+xml")
+              img(src="images/bracket-black@1x.png")
+            h1
+              | front-end developer
+              span |
+        .col-xs-9
           ul
+            li 
+              a#resume(href="javascript:void(0);") Resume 
             li
-              a(href="#") Resume
-            li
-              a(href="#") Contact
+              a#contact(href="javascript:void(0);") Contact
 
 
   section#about
     .container
       .row
         .col-lg-10.col-lg-offset-1.col-xs-12
-          h2 Hi, I'm 
+          p Hi, I'm 
             b Jamie Kelly
-            | , a Canadian front-end developer based in the SF Bay Area with a penchant for code.  For more than a decade I have been converting pizza and caffeine into functional websites.
+            | , a Canadian front-end developer based in the SF Bay Area with a penchant for code.  Since 2011 I have been converting pizza and caffeine into functional websites.
 
 
   section#work-experience
     .container
-      .col-lg-1.bg
-        i.icon.icon-work-experience
-      .col-lg-11.bg
-        h3 Work Experience
+      .row.wow.fadeInUpBig
+        .col-xs-3.col-lg-1
+          i.icon.icon-work-experience
+        .col-xs-9.col-lg-11
+          h3 Work Experience
 
-      .col-lg-3.col-lg-offset-1.col-xs-12
-        p August 2013 - Present
-      .col-lg-8.col-xs-12
-        strong Studio 174 | Owner &amp; Full-stack Developer
-        ul 
-          li Project management
-          li Graphic design, web design, &amp; development
-          li Content management &amp; e-commerce development
-          li Search engine optimization
+      .row.spacer.wow.fadeInUpBig  
+        .col-lg-3.col-lg-offset-1
+          p April 2013 - Present
+        dl.col-lg-8.col-xs-12
+          dt
+            strong Studio 174 | 
+              em Founder &amp; Full-Stack Developer
+          dd Project management
+          dd Graphic design, web design, &amp; development
+          dd Content management &amp; e-commerce development
+          dd Search engine optimization
+          dd Search engine marketing          
+      
+      .row.spacer.wow.fadeInUpBig 
+        .col-lg-3.col-lg-offset-1.col-xs-12
+          p May 2012 - June 2013
+        dl.col-lg-8.col-xs-12
+          dt
+            strong Link Web Development | 
+              em Full-Stack Developer 
+          dd Content management system development
+          dd Social media application development
+          dd E-commerce development
+          dd Responsive web development &amp; maintenance
+          dd Wordpress development 
 
-      .col-lg-3.col-lg-offset-1.col-xs-12
-        p May 2012 - June 2013
-      .col-lg-8.col-xs-12
-        strong Link Web Development | Full-stack Developer
-        ul
-          li Content management system development
-          li Social media application development
-          li E-commerce development
-          li Responsive web development &amp; maintenance
-          li Wordpress development
-
-      .col-lg-3.col-lg-offset-1.col-xs-12
-        p April 2011 - March 2012
-      .col-lg-8.col-xs-12
-        strong Shawn Knight Systems | PHP Programmer
-        ul
-          li Content management system development
-          li Social media application development
-          li E-commerce development
-          li Responsive web development &amp; maintenance
-          li Wordpress development     
+      .row.spacer.wow.fadeInUpBig 
+        .col-lg-3.col-lg-offset-1.col-xs-12
+          p April 2011 - March 2012
+        dl.col-lg-8.col-xs-12
+          dt
+            strong Affordable Computer Techs | 
+              em Web Designer &amp; Developer
+          dd Website design
+          dd Website development
+          dd Project management
+          dd Search engine optimization
+          dd Search engine marketing
 
 
   section#education
     .container
-      .col-lg-1
-        p icon
-      .col-lg-11
-        h3 Education
+      .row.wow.fadeInUpBig
+        .col-xs-3.col-lg-1
+          i.icon.icon-education                   
+        .col-xs-9.col-lg-11
+          h3 Education
 
-      .col-lg-3.col-lg-offset-1
-        p Current
-      .col-lg-8
-        strong Georgian College | 
-          em Interactive Web Design &amp; Development
-        p This program prepares graduates for careers as web designers and developers. Students are instructed in the use of current Web and Internet technologies to create innovative, interactive products for a variety of users, platforms, and devices. They are taught to plan, design, and develop engaging and intuitive user interfaces. Courses cover the use of current technologies including but not limited to HTML, CSS, JavaScript, the Document Object Model (DOM), Application Programming Interfaces (APIs), and a variety of popular scripting frameworks. With a focus on user-centred design, students will apply human interface guidelines, standard-based structures, and web design and development principles to create an accessible, usable, and captivating user experience.
+      .row.spacer.wow.fadeInUpBig
+        .col-lg-3.col-lg-offset-1
+          p 2016
+        dl.col-lg-8
+          dt
+            strong Georgian College | 
+              em Interactive Web Design &amp; Development
+          dt.subtitle Ontario College Diploma, Co-op
+          dd.list-item Advanced server-side scripting
+          dd.list-item Advanced client-side scripting
+          dd.list-item Bitmap &amp; vector graphics
+          dd.list-item User experience &amp; interaction design
+          dd.list-item Web usability &amp; accessibility          
 
-      .col-lg-3.col-lg-offset-1
-        p 2009 - 2011
-      .col-lg-8
-        strong Georgian College | 
-          em Web Animation &amp; Design
-        p The Web Animation and Design program prepares graduates for careers creating Web sites which are dynamic, well-structured and designed to address user needs and to satisfy project goals and objectives. Students are taught about the three streams of Web Design including structure, presentation and behaviour by gaining hands-on experience with a variety of Web technologies and principles. Students will demonstrate a strong ability to create fully accessible Web sites designed for search engines and a variety of users and platforms.   
-
-      .col-lg-3.col-lg-offset-1
-        p 2008 - 2009
-      .col-lg-8
-        strong Georgian College | 
-          em Computer Programming
-        p This program is designed to meet the academic needs of all students, whether a recent secondary graduate, college or university graduate, or a mature student. As students progress through the two years, the courses they take will help them gain insight and experience in the fields in which they may choose to apply their computer skills after graduation. A structured approach to problem solving, effective oral and written communications, and attention to standards and documentation are stressed throughout. Industry trends and requirements are continually monitored to ensure curriculum remains current and relevant. 
-
-
-
-  //- section#skills-techniques
-  //-   .container
-  //-     .col-lg-1
-  //-       p icon
-  //-     .col-lg-11
-  //-       h3 Skills &amp; Techniques
-
-  //-     .col-lg-5.col-lg-offset-1
-  //-       p DEVELOPMENT
-  //-       b Programming Languages
-  //-       ul
-  //-         li HTML5
-  //-         li CSS 3
-
-  //-     .col-lg-5
-  //-       p OTHER
-  //-       b Self-Management
-  //-       ul
-  //-         li Manage stuff
-  //-         li do things
-  //-         li fail more than I succeed
-
-  //-     .col-lg-5.col-lg-offset-1
-  //-       p DEVELOPMENT
-  //-       b Programming Languages
-  //-       ul
-  //-         li HTML5
-  //-         li CSS 3
-
-  //-     .col-lg-5
-  //-       p OTHER
-  //-       b Self-Management
-  //-       ul
-  //-         li Manage stuff
-  //-         li do things
-  //-         li paul blart
+      .row.spacer.wow.fadeInUpBig
+        .col-lg-3.col-lg-offset-1
+          p 2009 - 2011
+        dl.col-lg-8
+          dt
+            strong Georgian College | 
+              em Web Animation &amp; Design
+          dd
+            ul.two-column
+              li Information architecture
+              li Design principles
+              li 2D animation
+              li Web design
+              li Understanding the web
+              li Client managment &amp; professional practices
+              li Animation 2D &amp; 3D
+              li Server-side scripting
+              li Web content development
+              li Web standards
+          
+      .row.spacer.wow.fadeInUpBig
+        .col-lg-3.col-lg-offset-1
+          p 2008 - 2009
+        dl.col-lg-8
+          dt.title
+            strong Georgian College | 
+              em Computer Programmer
+          dd.list-item Computer programming concepts
+          dd.list-item Web development
+          dd.list-item Web programming
+          dd.list-item Data organization
+          dd.list-item Relational database
+          dd.list-item Math for computer industry
+          dd.list-item Introduction to Java
 
 
-  //- section#awards-recognition
-  //-   .container
-  //-     .col-lg-1
-  //-       p icon
-  //-     .col-lg-11
-  //-       h3 Awards &amp; Recognition
+  section#skills-techniques
+    .container
+      .row.wow.fadeInUpBig
+        .col-xs-3.col-lg-1
+          i.icon.icon-skills
+        .col-xs-9.col-lg-11
+          h3 Skills &amp; Techniques
 
-  //-     .col-lg-1.col-lg-offset-1
-  //-       p 2010
-  //-     .col-lg-10
-  //-       p Scholarship from the School of Design and Visual Arts
+      .row.spacer.wow.fadeInUpBig
+        .col-lg-11.col-lg-offset-1
+          h4
+            i.icon.icon-development
+            | Development
 
-  //-     .col-lg-1.col-lg-offset-1
-  //-       p 2010
-  //-     .col-lg-10 
-  //-       p Georgian College Award of Excellence in Web Design
+        .col-lg-6.col-lg-offset-1
+          strong Languages
+          ul
+            li JavaScript: AJAX, jQuery, AngularJS, CoffeeScript, JSON
+            li PHP: CakePHP, Laravel, Wordpress
+            li HTML: Jade, Bootstrap, Materialize
+            li CSS: Sass, Less
+            li Database: MySQL, MongoDB &amp; Mongoose
+            li Linux Shell Scripting
+
+        .col-lg-5
+          strong Environment
+          ul
+            li Node.js            
+            li MongoDB, ExpressJS, AngularJS, NodeJS, (MEAN)
+            li WHM / cPanel            
+            li Windows/Linux, Apache, MySQL, PHP (WAMP/LAMP)
+            li Heroku
+            li Agile (Scrum)
+            
+            
+            
+
+      .row.wow.fadeInUpBig
+        .col-lg-6.col-lg-offset-1
+          strong Techniques
+          ul.two-column
+            li 508 Accessibility Compliance
+            li Model View Controller (MVC/MVVC)
+            //- li Model View ViewModel Controller (MVVC)
+            li Performance Optimization
+            li Search Engine Marketing (SEM)
+            li Search Engine Optimization (SEO) 
+            li Unobtrusive JavaScript            
+            //- li Asynchronous JavaScript &amp; XML (AJAX)
+            li Semantic Web
+            li User Interface &amp; Experience (UI/UX)
+            //- li User Interface (UI)
+            li Website Audits            
+            li W3C Standards Compliance
+            li RESTful API design &amp; interfacing
+
+        .col-lg-5
+          strong Tools
+          ul.two-column
+            li Sublime Text 3
+            li Grunt, Gulp
+            li ConEmu
+            li Adobe Photoshop, Balsamiq
+            //- li Filezilla
+            li Slack Chat
+            li Jira
+            li Git
+            li HeidiSQL
+            //- li Piwik
+            //- li Balsamiq
+            li Putty
+            li Google: Webmaster Tools, Analytics, AdWords, Keyword Planner
+            
+            
+
+      .row.spacer.wow.fadeInUpBig
+        .col-lg-11.col-lg-offset-1
+          h4
+            i.icon.icon-other
+            | Other          
+        .col-lg-6.col-lg-offset-1
+          strong Projects I've Developed
+          ul.two-column
+            li Ecommerce platforms
+            li Content management systems
+            li Blogging software            
+            li Single page web applications
+            li Dynamic survey software
+            li Accounting software
+            li Work order management systems
+            li Online billing systems
+            li Real estate software
+            li Game server management software
+            li Customer relationship management systems
+      
+        .col-lg-5    
+          strong Self-Management
+          ul
+            li Manage multiple projects simultaneously
+            li Easily learn new software and programming languages
+            li Highly resourceful and efficient
+            li Cooperative and observant
+            li Strong attention to detail
+
+
+
+  section#awards-recognition
+    .container
+      .row.wow.fadeInUpBig
+        .col-xs-3.col-lg-1
+          i.icon.icon-awards
+        .col-xs-9.col-lg-11
+          h3 Awards &amp; Recognition
+      
+      .row.wow.fadeInUpBig
+        .col-lg-1.col-lg-offset-1
+          p 2010
+        .col-lg-10
+          strong Scholarship from the School of Design and Visual Arts
+      
+      .row.wow.fadeInUpBig
+        .col-lg-1.col-lg-offset-1
+          p 2010
+        .col-lg-10 
+          strong Georgian College Award of Excellence in Web Design

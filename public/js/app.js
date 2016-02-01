@@ -9,6 +9,10 @@
 
 // once the entire website has loaded
 window.onload = function() {
+    // instantiate WOW library
+    new WOW().init();
+
+
     // get window height and adjust introduction panel
     sizeIntro();
 
@@ -16,8 +20,6 @@ window.onload = function() {
     var H = document.documentElement;
     H.className = H.className.replace(/\bno-js\b/, 'js');
     H.style.opacity = 1;
-
-
 
     // add class to intro logo
     document.getElementById('jk-logo').className = 'animation logo-custom';
@@ -29,19 +31,43 @@ window.onload = function() {
 window.onresize = function() {
     // get window height and adjust introduction panel
     // sizeIntro();
-    sizeLogo();
 
+    // size logo
+    sizeLogo();
 };
 
 window.addEventListener("orientationchange", function() {
     // sizeIntro();
+
+    // size logo?
+    sizeLogo();
 }, false);
 
 // when the user clicks on the scroll down button
 var goBtn = document.getElementById('go');
 goBtn.onclick = function() {
+    // maybe?
+    // document.getElementById('about').style.paddingTop = '203.5px';
+
     // scroll to the about section
     smoothScroll('about');
+};
+
+// when the user clicks on the resume button
+var resumeBtn = document.getElementById('resume');
+resumeBtn.onclick = function() {
+    // scroll to resume
+    smoothScroll('work-experience');
+};
+
+// when the user clicks on the resume button
+var contactBtn = document.getElementById('contact');
+contactBtn.onclick = function() {
+    // scroll to footer, pass in some options
+    smoothScroll('footer', {
+        elem: 'contact-info',
+        animation: 'bounce'
+    }, addAnimation);
 };
 
 // when the user scrolls to a certain point
@@ -93,7 +119,7 @@ function currentYPosition() {
 // get element Y position
 function elmYPosition(eID) {
     var elm = document.getElementById(eID);
-    var y = elm.offsetTop;
+    var y = elm.offsetTop - 70;
     var node = elm;
     while (node.offsetParent && node.offsetParent != document.body) {
         node = node.offsetParent;
@@ -103,13 +129,19 @@ function elmYPosition(eID) {
 }
 
 // scroll to element
-function smoothScroll(eID, cb) {
+function smoothScroll(eID, options, cb) {
+    // vars
+    if (typeof options === 'undefined') {
+        options = {};
+    }
+    var r = false;
+
     var startY = currentYPosition();
     var stopY = elmYPosition(eID);
     var distance = stopY > startY ? stopY - startY : startY - stopY;
     if (distance < 100) {
         scrollTo(0, stopY);
-        return;
+        r = true;
     }
     var speed = Math.round(distance / 100);
     if (speed >= 20) speed = 20;
@@ -123,7 +155,7 @@ function smoothScroll(eID, cb) {
             if (leapY > stopY) leapY = stopY;
             timer++;
         }
-        return;
+        r = true;
     }
     for (var j = startY; j > stopY; j -= step) {
         setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
@@ -132,7 +164,12 @@ function smoothScroll(eID, cb) {
         timer++;
     }
 
-
+    if (r === true) {
+        if (typeof cb === "function") {
+            cb(options);
+        }
+        return;
+    }
 }
 
 // a function to size the logo
@@ -156,4 +193,31 @@ function sizeLogo() {
     else {
         console.log('mobile');
     }
+}
+
+// a function to add an animation to an elemet
+function addAnimation(options) {
+    // wait for the page to scroll down
+    setTimeout(function() {
+        // add class
+        document.getElementById(options.elem).className = 'animated ' + options.animation;
+
+        // remove class
+        removeClasses(options, 3000);
+
+    }, 400);
+}
+
+// a function to remove animation classes
+function removeClasses(options, timeout) {
+    // vars
+    if (typeof timeout === 'undefined') {
+        timeout = 0;
+    }
+
+    // add a timeout in the event you want a delay when removing a class
+    setTimeout(function() {
+        // remove class
+        document.getElementById(options.elem).className = '';
+    }, timeout);
 }
