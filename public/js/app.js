@@ -12,35 +12,37 @@ window.onload = function() {
     // instantiate WOW library
     new WOW().init();
 
-
     // get window height and adjust introduction panel
     sizeIntro();
+
+    // size logo
+    sizeLogo();
 
     // display the website
     var H = document.documentElement;
     H.className = H.className.replace(/\bno-js\b/, 'js');
     H.style.opacity = 1;
 
-    // add class to intro logo
-    document.getElementById('jk-logo').className = 'animation logo-custom';
-    document.getElementById('jk-bracket').className = 'animation bracket-custom';
-    document.getElementById('fed').className = 'logo-animated text-custom';
+    // apply animations to the intro logo
+    applyAnimations();
 
 };
 
 window.onresize = function() {
-    // get window height and adjust introduction panel
-    // sizeIntro();
-
     // size logo
     sizeLogo();
+
+    // apply animations to the intro logo
+    applyAnimations();
+
 };
 
 window.addEventListener("orientationchange", function() {
-    // sizeIntro();
-
-    // size logo?
+    // size logo
     sizeLogo();
+
+    // apply animations to the intro logo
+    applyAnimations();
 }, false);
 
 // when the user clicks on the scroll down button
@@ -70,14 +72,25 @@ contactBtn.onclick = function() {
     }, addAnimation);
 };
 
+// when the user clicks on the logo
+var logo = document.getElementsByClassName('nav-logo')[0];
+logo.onclick = function() {
+    // scroll to introduction
+    smoothScroll('intro');
+};
+
+
 // when the user scrolls to a certain point
 window.addEventListener("scroll", function() {
-    var scrollDistance = window.innerHeight;
-    if (window.scrollY > (scrollDistance - 75)) {
+    var scrollDistance = window.innerHeight,
+        scrollY = currentYPosition();
+
+    if (scrollY > (scrollDistance - 75)) {
         fixNavbar(true);
     } else {
         fixNavbar(false);
     }
+
 }, false);
 
 
@@ -174,24 +187,54 @@ function smoothScroll(eID, options, cb) {
 
 // a function to size the logo
 function sizeLogo() {
-    // get width of window
+    // // vars
+    // var wW = window.innerWidth,
+    //     jk = document.getElementById('jk-logo-fb'),
+    //     bracket = document.getElementById('jk-bracket-fb');
+
+    // // 1200 & up
+    // if (wW >= 1200) {
+    //     jk.src = 'images/jk-logo-white@3x.png';
+    //     bracket.src = 'images/bracket-white@3x.png';
+    // }
+    // // 992px and up
+    // else if (wW <= 1199 && wW >= 992) {
+    //     jk.src = 'images/jk-logo-white@3x.png';
+    //     bracket.src = 'images/bracket-white@3x.png';
+    // }
+    // // 768px and up
+    // else if (wW <= 991 && wW >= 768) {
+    //     jk.src = 'images/jk-logo-white@3x.png';
+    //     bracket.src = 'images/bracket-white@3x.png';
+    // }
+    // // mobile
+    // else {
+    //     jk.src = 'images/jk-logo-white@1x.png';
+    //     bracket.src = 'images/bracket-white@1x.png';
+    // }
+
+}
+
+// a function to get the device type
+function device() {
+    // vars
     var wW = window.innerWidth;
 
     // 1200 & up
     if (wW >= 1200) {
-        console.log('large desktop');
+        return 'desktop';
     }
     // 992px and up
     else if (wW <= 1199 && wW >= 992) {
-        console.log('desktop');
+        return 'desktop';
     }
     // 768px and up
     else if (wW <= 991 && wW >= 768) {
-        console.log('tablet');
+        return 'desktop';
     }
     // mobile
     else {
-        console.log('mobile');
+        return 'handheld';
     }
 }
 
@@ -220,4 +263,72 @@ function removeClasses(options, timeout) {
         // remove class
         document.getElementById(options.elem).className = '';
     }, timeout);
+}
+
+// a function to check if the browser is safari
+function isSafari() {
+    var safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (safari) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// a function to check version of IE
+function isGarbage() {
+    var rv = -1; // Return value assumes failure.
+    console.log(navigator.appVersion);
+    if (navigator.appName === 'Microsoft Internet Explorer') {
+
+        var ua = navigator.userAgent,
+            re = new RegExp("MSIE ([0-9]{1,}[\\.0-9]{0,})");
+
+        if (re.exec(ua) !== null) {
+            rv = parseFloat(RegExp.$1);
+        }
+    } else if (navigator.appName === "Netscape") {
+        /// in IE 11 the navigator.appVersion says 'trident'
+        /// in Edge the navigator.appVersion does not say trident
+        if (navigator.appVersion.indexOf('Trident') === -1) rv = 12;
+        else rv = 11;
+    }
+
+    return rv;
+}
+
+// a function to check if the browser support SVG
+function supportsSVG() {
+    return !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect;
+}
+
+// a function to intelligently apply animations to the intro logo
+function applyAnimations() {
+
+    // setup some vars
+    var svg = (supportsSVG() ? true : false),
+        safari = (isSafari() ? true : false),
+        garbage = (isGarbage() <= 11 ? true : false),
+        desktop = (device() === 'desktop' ? true : false),
+        handheld = (device() === 'handheld' ? true : false);
+
+    // does the device support SVG's?
+    if (svg === true) {
+        if (safari === true) {
+            document.getElementById('jk-logo').className = 'animation ' + (desktop === true ? 'sf-logo-custom' : 'sm-logo-custom');
+            document.getElementById('jk-bracket').className = 'animation ' + (desktop === true ? 'sf-bracket-custom' : 'sm-bracket-custom');
+        } else if (isGarbage) {
+            document.getElementById('jk-logo').className = 'animation ' + (desktop === true ? 'sf-logo-custom' : 'sm-logo-custom');
+            document.getElementById('jk-bracket').className = 'animation ' + (desktop === true ? 'sf-bracket-custom' : 'sm-bracket-custom');
+        } else {
+            document.getElementById('jk-logo').className = 'animation logo-custom';
+            document.getElementById('jk-bracket').className = 'animation bracket-custom';
+        }
+    } else {
+        // do some other hacky bullshit?
+    }
+
+    document.getElementById('fed').className = 'logo-animated type-custom';
+
 }

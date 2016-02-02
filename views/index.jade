@@ -2,13 +2,21 @@ extends layout
 
 block content
   header#intro
-    object#jk-logo(type="image/svg+xml", data="images/jk-logo.svg")
-      img(src="images/jk-logo-white@3x.png")
-    object#jk-bracket(type="image/svg+xml", data="images/bracket.svg")
-      img(src="images/bracket-white@3x.png")
+
+    //- object#jk-logo(type="image/svg+xml", data="images/jk-logo-white.svg")
+    //-   img#jk-logo-fb(src="images/jk-logo-white@3x.png")
+
+    img#jk-logo(src="images/jk-logo-white.svg")
+
+    //- object#jk-bracket(type="image/svg+xml", data="images/bracket.svg")
+    //-   img#jk-bracket-fb(src="images/bracket-white@3x.png")
+
+    img#jk-bracket(src="images/bracket.svg") 
+
     h1#fed
       | front-end developer
       span |
+
     a#go(href="javascript:void(0);") Go
 
 
@@ -18,9 +26,9 @@ block content
         .col-xs-3
           .nav-logo
             object#nav-jk(data="images/jk-logo-black.svg", type="image/svg+xml")
-              img(src="images/jk-logo-black@1x.png")
+              img#nav-jk-fb(src="images/jk-logo-black@1x.png")
             object#nav-bracket(data="images/bracket-black.svg", type="image/svg+xml")
-              img(src="images/bracket-black@1x.png")
+              img#nav-bracket-fb(src="images/bracket-black@1x.png")
             h1
               | front-end developer
               span |
@@ -43,16 +51,16 @@ block content
 
   section#work-experience
     .container
-      .row.wow.fadeInUpBig
-        .col-xs-3.col-lg-1
+      .row.wow.fadeInUp
+        .col-xs-3.col-sm-1.col-lg-1
           i.icon.icon-work-experience
-        .col-xs-9.col-lg-11
+        .col-xs-9.col-sm-11.col-lg-11
           h3 Work Experience
 
-      .row.spacer.wow.fadeInUpBig  
-        .col-lg-3.col-lg-offset-1
-          p April 2013 - Present
-        dl.col-lg-8.col-xs-12
+      .row.spacer.wow.fadeInUp  
+        .col-sm-3.col-sm-offset-1.col-lg-3.col-lg-offset-1
+          p 2013 - Present
+        dl.col-sm-8.col-lg-8.col-xs-12
           dt
             strong Studio 174 | 
               em Founder &amp; Full-Stack Developer
@@ -62,10 +70,10 @@ block content
           dd Search engine optimization
           dd Search engine marketing          
       
-      .row.spacer.wow.fadeInUpBig 
-        .col-lg-3.col-lg-offset-1.col-xs-12
-          p May 2012 - June 2013
-        dl.col-lg-8.col-xs-12
+      .row.spacer.wow.fadeInUp
+        .col-sm-3.col-sm-offset-1.col-lg-3.col-lg-offset-1
+          p 2012 - 2013
+        dl.col-sm-8.col-lg-8.col-xs-12
           dt
             strong Link Web Development | 
               em Full-Stack Developer 
@@ -75,10 +83,10 @@ block content
           dd Responsive web development &amp; maintenance
           dd Wordpress development 
 
-      .row.spacer.wow.fadeInUpBig 
-        .col-lg-3.col-lg-offset-1.col-xs-12
-          p April 2011 - March 2012
-        dl.col-lg-8.col-xs-12
+      .row.spacer.wow.fadeInUp
+        .col-sm-3.col-sm-offset-1.col-lg-3.col-lg-offset-1
+          p 2011 - 2012
+        dl.col-sm-8.col-lg-8.col-xs-12
           dt
             strong Affordable Computer Techs | 
               em Web Designer &amp; Developer
@@ -86,21 +94,21 @@ block content
           dd Website development
           dd Project management
           dd Search engine optimization
-          dd Search engine marketing
+          dd Search engine marketing      
 
 
   section#education
     .container
-      .row.wow.fadeInUpBig
-        .col-xs-3.col-lg-1
+      .row.wow.fadeInUp
+        .col-xs-3.col-sm-1.col-lg-1
           i.icon.icon-education                   
-        .col-xs-9.col-lg-11
+        .col-xs-9.col-sm-11.col-lg-11
           h3 Education
 
-      .row.spacer.wow.fadeInUpBig
-        .col-lg-3.col-lg-offset-1
+      .row.spacer.wow.fadeInUp
+        .col-sm-3.col-sm-offset-1.col-lg-3.col-lg-offset-1
           p 2016
-        dl.col-lg-8
+        dl.col-sm-8.col-lg-8.col-xs-12
           dt
             strong Georgian College | 
               em Interactive Web Design &amp; Development
@@ -111,10 +119,10 @@ block content
           dd.list-item User experience &amp; interaction design
           dd.list-item Web usability &amp; accessibility          
 
-      .row.spacer.wow.fadeInUpBig
-        .col-lg-3.col-lg-offset-1
+      .row.spacer.wow.fadeInUp
+        .col-sm-3.col-sm-offset-1.col-lg-3.col-lg-offset-1
           p 2009 - 2011
-        dl.col-lg-8
+        dl.col-sm-8.col-lg-8.col-xs-12
           dt
             strong Georgian College | 
               em Web Animation &amp; Design
@@ -131,10 +139,10 @@ block content
               li Web content development
               li Web standards
           
-      .row.spacer.wow.fadeInUpBig
-        .col-lg-3.col-lg-offset-1
+      .row.spacer.wow.fadeInUp
+        .col-sm-3.col-sm-offset-1.col-lg-3.col-lg-offset-1
           p 2008 - 2009
-        dl.col-lg-8
+        dl.col-sm-8.col-lg-8.col-xs-12
           dt.title
             strong Georgian College | 
               em Computer Programmer
@@ -149,19 +157,19 @@ block content
 
   section#skills-techniques
     .container
-      .row.wow.fadeInUpBig
-        .col-xs-3.col-lg-1
+      .row.wow.fadeInUp
+        .col-xs-3.col-sm-1.col-lg-1
           i.icon.icon-skills
-        .col-xs-9.col-lg-11
+        .col-xs-9.col-sm-11.col-lg-11
           h3 Skills &amp; Techniques
 
-      .row.spacer.wow.fadeInUpBig
+      .row.spacer.wow.fadeInUp
         .col-lg-11.col-lg-offset-1
           h4
             i.icon.icon-development
             | Development
 
-        .col-lg-6.col-lg-offset-1
+        .col-sm-7.col-lg-6.col-lg-offset-1
           strong Languages
           ul
             li JavaScript: AJAX, jQuery, AngularJS, CoffeeScript, JSON
@@ -171,7 +179,7 @@ block content
             li Database: MySQL, MongoDB &amp; Mongoose
             li Linux Shell Scripting
 
-        .col-lg-5
+        .col-sm-5.col-lg-5
           strong Environment
           ul
             li Node.js            
@@ -181,11 +189,9 @@ block content
             li Heroku
             li Agile (Scrum)
             
-            
-            
 
-      .row.wow.fadeInUpBig
-        .col-lg-6.col-lg-offset-1
+      .row.wow.fadeInUp
+        .col-sm-7.col-lg-6.col-lg-offset-1
           strong Techniques
           ul.two-column
             li 508 Accessibility Compliance
@@ -203,31 +209,31 @@ block content
             li W3C Standards Compliance
             li RESTful API design &amp; interfacing
 
-        .col-lg-5
-          strong Tools
-          ul.two-column
-            li Sublime Text 3
-            li Grunt, Gulp
-            li ConEmu
-            li Adobe Photoshop, Balsamiq
-            //- li Filezilla
-            li Slack Chat
-            li Jira
-            li Git
-            li HeidiSQL
-            //- li Piwik
-            //- li Balsamiq
-            li Putty
-            li Google: Webmaster Tools, Analytics, AdWords, Keyword Planner
+         .col-sm-5.col-lg-5
+            strong Tools
+            ul.two-column
+              li Sublime Text 3
+              li Grunt, Gulp
+              li ConEmu
+              li Adobe Photoshop, Balsamiq
+              //- li Filezilla
+              li Slack Chat
+              li Jira
+              li Git
+              li HeidiSQL
+              //- li Piwik
+              //- li Balsamiq
+              li Putty
+              li Google: Webmaster Tools, Analytics, AdWords, Keyword Planner
             
             
 
-      .row.spacer.wow.fadeInUpBig
+      .row.spacer.wow.fadeInUp
         .col-lg-11.col-lg-offset-1
           h4
             i.icon.icon-other
             | Other          
-        .col-lg-6.col-lg-offset-1
+        .col-sm-7.col-lg-6.col-lg-offset-1
           strong Projects I've Developed
           ul.two-column
             li Ecommerce platforms
@@ -242,7 +248,7 @@ block content
             li Game server management software
             li Customer relationship management systems
       
-        .col-lg-5    
+        .col-sm-5.col-lg-5    
           strong Self-Management
           ul
             li Manage multiple projects simultaneously
@@ -255,20 +261,20 @@ block content
 
   section#awards-recognition
     .container
-      .row.wow.fadeInUpBig
-        .col-xs-3.col-lg-1
+      .row.wow.fadeInUp
+        .col-xs-3.col-sm-1.col-lg-1
           i.icon.icon-awards
-        .col-xs-9.col-lg-11
+        .col-xs-9.col-sm-11.col-lg-11
           h3 Awards &amp; Recognition
       
-      .row.wow.fadeInUpBig
-        .col-lg-1.col-lg-offset-1
+      .row.wow.fadeInUp
+        .col-sm-2.col-sm-offset-1.col-lg-1.col-lg-offset-1
           p 2010
-        .col-lg-10
+        .col-sm-9.col-lg-10
           strong Scholarship from the School of Design and Visual Arts
       
-      .row.wow.fadeInUpBig
-        .col-lg-1.col-lg-offset-1
+      .row.wow.fadeInUp
+        .col-sm-2.col-sm-offset-1.col-lg-1.col-lg-offset-1
           p 2010
-        .col-lg-10 
+        .col-sm-9.col-lg-10.col-lg-10 
           strong Georgian College Award of Excellence in Web Design

@@ -1,6 +1,6 @@
 {
   "name": "kellyjg",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Vector & Bitmap PLAR",
   "authors": [
     "Jamie Kelly <jamie@studio174.ca>"
@@ -15,10 +15,9 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.6"
-  },
-  "devDependencies": {
+    "bootstrap": "~3.3.6",
     "animate.css": "~3.5.1",
-    "wow": "~1.1.2"
+    "wow": "~1.1.2",
+    "modernizer": "~2.8.2"
   }
 }

@@ -1,9 +1,16 @@
 # kellyjg
 - Bitmap & Vector PLAR
 
-### Current Version: 0.5.0
+### Current Version: 0.6.0
 
 ## Changelog
+- v0.6.0 (2/1/2016) 
+	- adds some garbage support (IE)
+	- revamps svg solution (incomplete)
+	- adds github icon and social links
+	- finalizes most responsive styles
+	- adds a ton of javascript for cross-browser quirks
+	- discovers many bugs
 - v0.5.0 (1/29/2016 - 1/31/2016) 
 	- adds navbar logo animation
 	- finishes copy

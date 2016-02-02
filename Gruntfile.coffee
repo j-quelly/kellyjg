@@ -60,8 +60,8 @@ module.exports = (grunt) ->
 				]
 				cwd: './'
 				exclude: [
-					"dist/jquery.js"
-					"dist/js/bootstrap.js"
+					# "dist/jquery.js"
+					# "dist/js/bootstrap.js"
 				]
 				ignorePath: /^(\.\.\/\.\.\/)/
 
