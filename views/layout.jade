@@ -1,26 +1,41 @@
 doctype html
-html
+html.no-js
   head
     title Jamie Kelly - Full-Stack Web Developer | Kellyjg.com
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-    link(href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Serif:700,400", rel="stylesheet", type="text/css")
+    link(href="https://fonts.googleapis.com/css?family=Lato:400,700%7CNoto+Serif:700,400", rel="stylesheet", type="text/css")
     script.
-        document.documentElement.className = 'no-js';    
+        document.documentElement.className = 'fouc';    
 
     //- lib
     // bower:css
-    link(rel='stylesheet', href='../bower_components/animate.css/animate.css')
+    
     // endbower
 
     //- app
     link(rel="stylesheet", href="css/app.css")
+
   body
+    
+    <!--[if lte IE 8]>
+    .container
+      .row
+        .col-lg-12
+          .alert.alert-warning
+            strong Warning:
+              | You are using an 
+              strong outdated
+              |  browser. Please 
+              a(href="http://browsehappy.com/", target="_blank", rel="nofollow") upgrade your browser
+              |  to improve your experience.
+    <![endif]-->
+
     block content
 
     footer#footer
-        div.oj
+        div#oj
           p.text-center
             i.icon.icon-copyright
             span Jamie Kelly
@@ -31,22 +46,20 @@ html
                         p Interested in working together?
                             br
                             | Email me at jamie@kellyjg.com
-                        a(href="https://github.com/studio174", target="_blank")
-                            i.icon.icon-github
-                        a(href="https://twitter.com/Studio_174", target="_blank")
-                            i.icon.icon-linkedin
-                        a(href="https://ca.linkedin.com/in/jamie-kelly-02652721", target="_blank")
-                            i.icon.icon-twitter    
-          
+                        div#social
+                            a(href="https://github.com/studio174", target="_blank")
+                                i.icon.icon-github
+                            a(href="https://twitter.com/Studio_174", target="_blank")
+                                i.icon.icon-linkedin
+                            a(href="https://ca.linkedin.com/in/jamie-kelly-02652721", target="_blank")
+                                i.icon.icon-twitter    
 
 
     //- lib
     // bower:js
-    script(src='../bower_components/jquery/dist/jquery.js')
-    script(src='../bower_components/bootstrap/dist/js/bootstrap.js')
+    script(src='js/lib.js')
     // endbower
-    script(src='../bower_components/wow/dist/wow.js')
-        
+    
     //- app
     script(src='js/app.js')
-    script(src='//localhost:35729/livereload.js')
+    // livereload
