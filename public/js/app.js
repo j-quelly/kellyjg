@@ -81,7 +81,7 @@ goBtn.onclick = function(e) {
     }
 
     // scroll to the about section
-    smoothScrollTo('about', 250, true, fixNavbar);
+    smoothScrollTo('about', 800, true, fixNavbar);
 };
 
 // cache element
@@ -95,7 +95,7 @@ resumeBtn.onclick = function(e) {
     }
 
     // scroll to resume
-    smoothScrollTo('work-experience', 250);
+    smoothScrollTo('work-experience', 800);
 };
 
 // cache element
@@ -109,7 +109,7 @@ contactBtn.onclick = function(e) {
     }
 
     // scroll to footer, pass in some options
-    smoothScrollTo('footer', 250, {
+    smoothScrollTo('footer', 800, {
         elem: 'contact-info',
         animation: 'bounce'
     }, addAnimation);
@@ -127,7 +127,7 @@ if (!oldIEV(['MSIE 8', 'MSIE 7.'])) {
         }
 
         // scroll to introduction
-        smoothScrollTo('intro', 250);
+        smoothScrollTo('intro', 800);
     };
 }
 
@@ -479,3 +479,23 @@ function smoothScrollTo(eID, duration, options, callback) {
     };
     animateScroll();
 }
+
+
+/**
+ * Google Analytics
+ */
+/*jshint ignore:start */
+(function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-73387302-1', 'auto');
+ga('send', 'pageview');

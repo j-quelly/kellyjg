@@ -1,7 +1,7 @@
 # kellyjg
 - Bitmap & Vector PLAR 
 
-### Current Version: 1.7.11 
+### Current Version: 1.7.12 
 
 ## Getting Started
 1. ```$ bower install```
@@ -14,6 +14,13 @@
 1. ```$ grunt serve-dev```
 
 ## Changelog
+- v1.7.12 (2/5/2016)  
+	- adds more delay to scroll event
+	- speeds up FOUC
+	- speeds up blinking cursor
+	- fixes social icon links
+	- adds analytics to app.js
+	- moves up logo
 - v1.7.11 (2/4/2016)  
 	- fixes callback timeout
 	- adds a task for cleaning up build folder for cache busting

@@ -424,7 +424,7 @@ dd {
 /* uncss:ignore */
 
 .js {
-  transition: opacity 250ms ease-in;
+  transition: opacity 125ms ease-in;
 }
 
 /* uncss:ignore */
@@ -505,7 +505,7 @@ dd {
 
 #intro h1 span {
   margin: 0 0 0 4px;
-  animation: blink-custom 1.5s infinite;
+  animation: blink-custom 1s infinite;
 }
 
 #intro #go {
@@ -1175,13 +1175,13 @@ footer #oj span {
   }
 
   #intro #jk-logo {
-    top: 339px;
+    top: 309px;
     width: 84px;
     height: 90px;
   }
 
   #intro #jk-bracket {
-    top: 338px;
+    top: 308px;
     width: 84px;
     height: 90px;
   }
@@ -1191,7 +1191,7 @@ footer #oj span {
     font-size: 38px;
     font-weight: bold;
     width: 360px;
-    top: 361px;
+    top: 331px;
     margin: 0 0 0 -177px;
   }
 
