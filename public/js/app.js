@@ -7,91 +7,149 @@
  * Events
  */
 
+// if the browser does not support SVG
+if (!supportsSVG()) {
+    // place and size the svg fallbacks 
+    sizeSVG();
+}
+
 // once the entire website has loaded
 window.onload = function() {
-    // instantiate WOW library
-    new WOW().init();
+    // if a modern browser
+    if (!oldIEV(['MSIE 9', 'MSIE 8', 'MSIE 7.'])) {
+        // instantiate the WOW library
+        new WOW().init();
+    }
 
-    // get window height and adjust introduction panel
+    // adjust the intro
     sizeIntro();
 
-    // size logo
-    sizeLogo();
+    // if IE9 add a class to fix some aesthetics 
+    if (oldIEV(['MSIE 9'])) {
+        document.documentElement.className = "ieGarbage";
+    }
 
-    // display the website
+    // cache document element (HTML element)
     var H = document.documentElement;
+
+    // if the window supports javascript then remove no-js class
     H.className = H.className.replace(/\bno-js\b/, 'js');
-    H.style.opacity = 1;
+
+    // prevent flash of unstyled content (FOUC)    
+    H.className = H.className.replace(/\bfouc\b/, 'js');
 
     // apply animations to the intro logo
     applyAnimations();
-
 };
 
+// when the screen is resized
 window.onresize = function() {
-    // size logo
-    sizeLogo();
+    // if the browser does not support SVG
+    if (!supportsSVG()) {
+        // place the svg fallbacks 
+        sizeSVG();
+    }
 
-    // apply animations to the intro logo
+    // reapply animations to the intro logo
     applyAnimations();
-
 };
 
-window.addEventListener("orientationchange", function() {
-    // size logo
-    sizeLogo();
+// if modern browser
+if (!oldIEV(['MSIE 8', 'MSIE 7.'])) {
+    // add a scroll event listener
+    window.addEventListener("orientationchange", function() {
+        // if the browser does not support SVG
+        if (!supportsSVG()) {
+            // place the svg fallbacks 
+            sizeSVG();
+        }
 
-    // apply animations to the intro logo
-    applyAnimations();
-}, false);
+        // apply animations to the intro logo
+        applyAnimations();
 
-// when the user clicks on the scroll down button
+    }, false);
+}
+
+// cache element
 var goBtn = document.getElementById('go');
-goBtn.onclick = function() {
-    // maybe?
-    // document.getElementById('about').style.paddingTop = '203.5px';
+// when the user clicks on the scroll down button
+goBtn.onclick = function(e) {
+    // if a modern browser
+    if (!oldIEV()) {
+        // prevent default event
+        e.preventDefault();
+    }
 
     // scroll to the about section
-    smoothScroll('about');
+    smoothScrollTo('about', 250, true, fixNavbar);
 };
 
-// when the user clicks on the resume button
+// cache element
 var resumeBtn = document.getElementById('resume');
-resumeBtn.onclick = function() {
+// when the user clicks on the resume button
+resumeBtn.onclick = function(e) {
+    // if a modern browser
+    if (!oldIEV()) {
+        // prevent default event
+        e.preventDefault();
+    }
+
     // scroll to resume
-    smoothScroll('work-experience');
+    smoothScrollTo('work-experience', 250);
 };
 
-// when the user clicks on the resume button
+// cache element
 var contactBtn = document.getElementById('contact');
-contactBtn.onclick = function() {
+// when the user clicks on the contact button
+contactBtn.onclick = function(e) {
+    // if a modern browser
+    if (!oldIEV()) {
+        // prevent default event
+        e.preventDefault();
+    }
+
     // scroll to footer, pass in some options
-    smoothScroll('footer', {
+    smoothScrollTo('footer', 250, {
         elem: 'contact-info',
         animation: 'bounce'
     }, addAnimation);
 };
 
-// when the user clicks on the logo
-var logo = document.getElementsByClassName('nav-logo')[0];
-logo.onclick = function() {
-    // scroll to introduction
-    smoothScroll('intro');
-};
+// if modern browser
+if (!oldIEV(['MSIE 8', 'MSIE 7.'])) {
+    // when the user clicks on the logo
+    var logo = document.getElementsByClassName('nav-logo')[0];
+    logo.onclick = function(e) {
+        // if a modern browser
+        if (!oldIEV()) {
+            // prevent default event
+            e.preventDefault();
+        }
 
+        // scroll to introduction
+        smoothScrollTo('intro', 250);
+    };
+}
 
-// when the user scrolls to a certain point
-window.addEventListener("scroll", function() {
-    var scrollDistance = window.innerHeight,
-        scrollY = currentYPosition();
+// if modern browser
+if (!oldIEV(['MSIE 8', 'MSIE 7.'])) {
+    // when the user scrolls to a designated point
+    window.addEventListener("scroll", function() {
+        // vars
+        var scrollDistance = window.innerHeight,
+            scrollY = currentYPosition();
 
-    if (scrollY > (scrollDistance - 75)) {
-        fixNavbar(true);
-    } else {
-        fixNavbar(false);
-    }
+        // if the y offset is equal to the window height - 75px
+        if (scrollY > (scrollDistance - 75)) {
+            // display the fixed navbar
+            fixNavbar(true);
+        } else {
+            // remove the fixed navbar
+            fixNavbar(false);
+        }
 
-}, false);
+    }, false);
+}
 
 
 /**
@@ -104,114 +162,119 @@ function fixNavbar(arg) {
     var navbar = document.getElementById('navbar');
     var body = document.getElementsByTagName('body')[0];
 
+    // if the arg is true
     if (arg === true) {
+        // apply the classes
         navbar.className = 'navbar navbar-default navbar-fixed-top animation';
     } else {
+        // revert back
         navbar.className = 'navbar navbar-default';
     }
 }
 
 // get window height and adjust introduct ion panel
 function sizeIntro() {
+    // vars
     var wH = document.documentElement.clientHeight;
+
+    // adjust the height
     document.getElementById('intro').style.height = wH + 'px';
 }
 
 // get current y position
 function currentYPosition() {
+
     // Firefox, Chrome, Opera, Safari
-    if (self.pageYOffset) return self.pageYOffset;
+    if (self.pageYOffset) {
+        return self.pageYOffset;
+    }
+
     // Internet Explorer 6 - standards mode
-    if (document.documentElement && document.documentElement.scrollTop)
+    if (document.documentElement && document.documentElement.scrollTop) {
         return document.documentElement.scrollTop;
+    }
+
     // Internet Explorer 6, 7 and 8
-    if (document.body.scrollTop) return document.body.scrollTop;
+    if (document.body.scrollTop) {
+        return document.body.scrollTop;
+    }
+
     return 0;
 }
 
 // get element Y position
 function elmYPosition(eID) {
-    var elm = document.getElementById(eID);
-    var y = elm.offsetTop - 70;
-    var node = elm;
+    // vars
+    var elm = document.getElementById(eID),
+        y = elm.offsetTop - 65,
+        node = elm;
+
     while (node.offsetParent && node.offsetParent != document.body) {
         node = node.offsetParent;
         y += node.offsetTop;
     }
+
     return y;
 }
 
-// scroll to element
-function smoothScroll(eID, options, cb) {
+// a function to size the SVG graphics
+function sizeSVG() {
+    /**
+     * This function could be significantly improved 
+     * if all fall backs are given the same naming convention
+     * and replce the below code with a loop to replace .svg
+     * with .png.  And to append @#x depending on device dimensions 
+     */
+
     // vars
-    if (typeof options === 'undefined') {
-        options = {};
-    }
-    var r = false;
+    var wW = window.innerWidth,
+        jk = document.getElementById('jk-logo'),
+        bracket = document.getElementById('jk-bracket'),
+        navJK = document.getElementById('nav-jk'),
+        navBracket = document.getElementById('nav-bracket');
 
-    var startY = currentYPosition();
-    var stopY = elmYPosition(eID);
-    var distance = stopY > startY ? stopY - startY : startY - stopY;
-    if (distance < 100) {
-        scrollTo(0, stopY);
-        r = true;
+    // 1200 & up
+    if (wW >= 1200) {
+        // intro SVG's
+        jk.src = 'images/jk-logo-white@3x.png';
+        bracket.src = 'images/bracket-white@3x.png';
+
+        // nav SVG's
+        navJK.src = 'images/jk-logo-black@1x.png';
+        navBracket.src = 'images/bracket-black@1x.png';
     }
-    var speed = Math.round(distance / 100);
-    if (speed >= 20) speed = 20;
-    var step = Math.round(distance / 25);
-    var leapY = stopY > startY ? startY + step : startY - step;
-    var timer = 0;
-    if (stopY > startY) {
-        for (var i = startY; i < stopY; i += step) {
-            setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
-            leapY += step;
-            if (leapY > stopY) leapY = stopY;
-            timer++;
-        }
-        r = true;
+    // 992px and up
+    else if (wW <= 1199 && wW >= 992) {
+        // intro SVG's
+        jk.src = 'images/jk-logo-white@3x.png';
+        bracket.src = 'images/bracket-white@3x.png';
+
+        // nav SVG's
+        navJK.src = 'images/jk-logo-black@1x.png';
+        navBracket.src = 'images/bracket-black@1x.png';
     }
-    for (var j = startY; j > stopY; j -= step) {
-        setTimeout("window.scrollTo(0, " + leapY + ")", timer * speed);
-        leapY -= step;
-        if (leapY < stopY) leapY = stopY;
-        timer++;
+    // 768px and up
+    else if (wW <= 991 && wW >= 768) {
+        // intro SVG's
+        jk.src = 'images/jk-logo-white@3x.png';
+        bracket.src = 'images/bracket-white@3x.png';
+
+        // nav SVG's
+        navJK.src = 'images/jk-logo-black@1x.png';
+        navBracket.src = 'images/bracket-black@1x.png';
+    }
+    // mobile
+    else {
+        // intro SVG's
+        jk.src = 'images/jk-logo-white@1x.png';
+        bracket.src = 'images/bracket-white@1x.png';
+
+        // nav SVG's
+        navJK.src = 'images/jk-logo-black@1x.png';
+        navBracket.src = 'images/bracket-black@1x.png';
     }
 
-    if (r === true) {
-        if (typeof cb === "function") {
-            cb(options);
-        }
-        return;
-    }
-}
 
-// a function to size the logo
-function sizeLogo() {
-    // // vars
-    // var wW = window.innerWidth,
-    //     jk = document.getElementById('jk-logo-fb'),
-    //     bracket = document.getElementById('jk-bracket-fb');
-
-    // // 1200 & up
-    // if (wW >= 1200) {
-    //     jk.src = 'images/jk-logo-white@3x.png';
-    //     bracket.src = 'images/bracket-white@3x.png';
-    // }
-    // // 992px and up
-    // else if (wW <= 1199 && wW >= 992) {
-    //     jk.src = 'images/jk-logo-white@3x.png';
-    //     bracket.src = 'images/bracket-white@3x.png';
-    // }
-    // // 768px and up
-    // else if (wW <= 991 && wW >= 768) {
-    //     jk.src = 'images/jk-logo-white@3x.png';
-    //     bracket.src = 'images/bracket-white@3x.png';
-    // }
-    // // mobile
-    // else {
-    //     jk.src = 'images/jk-logo-white@1x.png';
-    //     bracket.src = 'images/bracket-white@1x.png';
-    // }
 
 }
 
@@ -279,7 +342,7 @@ function isSafari() {
 // a function to check version of IE
 function isGarbage() {
     var rv = -1; // Return value assumes failure.
-    console.log(navigator.appVersion);
+    // console.log(navigator.appVersion);
     if (navigator.appName === 'Microsoft Internet Explorer') {
 
         var ua = navigator.userAgent,
@@ -325,10 +388,98 @@ function applyAnimations() {
             document.getElementById('jk-logo').className = 'animation logo-custom';
             document.getElementById('jk-bracket').className = 'animation bracket-custom';
         }
-    } else {
-        // do some other hacky bullshit?
     }
 
-    document.getElementById('fed').className = 'logo-animated type-custom';
+    document.getElementById('fed').className = 'type-custom';
 
+}
+
+// a function to check version of IE
+function oldIEV(versions) {
+    // vars
+    var IE = navigator.appVersion;
+    if (versions === undefined) {
+        versions = ['MSIE 9', 'MSIE 8', 'MSIE 7.'];
+    }
+    var oldIE = false;
+
+    // loop thru versions
+    for (var i = 0; i < versions.length; i++) {
+        if (IE.indexOf(versions[i]) != -1) {
+            oldIE = true;
+        }
+    }
+
+    return oldIE;
+}
+
+// easing functions http://goo.gl/5HLl8
+Math.easeInOutQuad = function(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) {
+        return c / 2 * t * t + b;
+    }
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+};
+
+Math.easeInCubic = function(t, b, c, d) {
+    var tc = (t /= d) * t * t;
+    return b + c * (tc);
+};
+
+Math.inOutQuintic = function(t, b, c, d) {
+    var ts = (t /= d) * t,
+        tc = ts * t;
+    return b + c * (6 * tc * ts + -15 * ts * ts + 10 * tc);
+};
+
+// requestAnimationFrame for Smart Animating http://goo.gl/sx5sts
+var requestAnimFrame = (function() {
+    return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
+        window.setTimeout(callback, 1000 / 60);
+    };
+})();
+
+function smoothScrollTo(eID, duration, options, callback) {
+    if (typeof options === 'undefined') {
+        options = {};
+    }
+
+    // because it's so fucking difficult to detect the scrolling element, just move them all
+    function move(amount) {
+        document.documentElement.scrollTop = amount;
+        document.body.parentNode.scrollTop = amount;
+        document.body.scrollTop = amount;
+    }
+
+    function position() {
+        return document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
+    }
+
+    // vars
+    var start = position(),
+        to = elmYPosition(eID),
+        change = to - start,
+        currentTime = 0,
+        increment = 20;
+    duration = (typeof(duration) === 'undefined') ? 500 : duration;
+    var animateScroll = function() {
+        // increment the time
+        currentTime += increment;
+        // find the value with the quadratic in-out easing function
+        var val = Math.easeInOutQuad(currentTime, start, change, duration);
+        // move the document.body
+        move(val);
+        // do the animation unless its over
+        if (currentTime < duration) {
+            requestAnimFrame(animateScroll);
+        } else {
+            if (callback && typeof(callback) === 'function') {
+                // the animation is done so lets callback
+                callback(options);
+            }
+        }
+    };
+    animateScroll();
 }
