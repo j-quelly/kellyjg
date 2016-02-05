@@ -303,15 +303,11 @@ function device() {
 
 // a function to add an animation to an elemet
 function addAnimation(options) {
-    // wait for the page to scroll down
-    setTimeout(function() {
-        // add class
-        document.getElementById(options.elem).className = 'animated ' + options.animation;
+    // add class
+    document.getElementById(options.elem).className = 'animated ' + options.animation;
 
-        // remove class
-        removeClasses(options, 3000);
-
-    }, 400);
+    // remove class
+    removeClasses(options, 3000);
 }
 
 // a function to remove animation classes

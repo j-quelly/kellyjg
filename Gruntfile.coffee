@@ -2,7 +2,7 @@ module.exports = (grunt) ->
 	grunt.initConfig
 		pkg: grunt.file.readJSON("package.json") 
 		path: require "path"
-		cb: "v1710"
+		cb: "v1711"
 
 
 		# list our available tasks
@@ -77,6 +77,11 @@ module.exports = (grunt) ->
 				src: ['public<%= path.sep %>js']
 			tmp:
 				src: ['.tmp']
+			build:
+				src: [
+					'build<%= path.sep %>css'
+					'build<%= path.sep %>js'
+				]
 			all:
 				src: [
 					'public<%= path.sep %>css'
@@ -353,7 +358,7 @@ module.exports = (grunt) ->
 	# register our grunt tasks
 	grunt.registerTask("default", ["availabletasks"])
 	grunt.registerTask("serve-dev", ["string-replace:dev", "wiredep", "less:dev", "postcss:dist", "concurrent:dev"])
-	grunt.registerTask("build", ["bower_concat:build", "imagemin:build", "copy:images",  "copy:fonts", "less:prebuild", "string-replace:build", "jade:compile", "uncss:build", "cssmin:build", "uglify:build", "string-replace:postbuild"])
+	grunt.registerTask("build", ["clean:build", "bower_concat:build", "imagemin:build", "copy:images",  "copy:fonts", "less:prebuild", "string-replace:build", "jade:compile", "uncss:build", "cssmin:build", "uglify:build", "string-replace:postbuild"])
 	grunt.registerTask("vetcss", ["clean:tmp", "less:vet", "postcss:vet", "csslint:tmp"])
 
 	# legend

@@ -1,7 +1,7 @@
 # kellyjg
 - Bitmap & Vector PLAR 
 
-### Current Version: 1.7.10 
+### Current Version: 1.7.11 
 
 ## Getting Started
 1. ```$ bower install```
@@ -14,6 +14,8 @@
 1. ```$ grunt serve-dev```
 
 ## Changelog
+- v1.7.11 (2/4/2016)  
+	- fixes callback timeout
 - v1.7.10 (2/2/2016 - 2/4/2016)  
 	- fixes FOUC bug 
 	- fixes nav svg in opera app
