@@ -1,23 +1,15 @@
 extends layout
 
 block content
-  header#intro
+  header#intro   
 
-    //- object#jk-logo(type="image/svg+xml", data="images/jk-logo-white.svg")
-    //-   img#jk-logo-fb(src="images/jk-logo-white@3x.png")
-
-    img#jk-logo(src="images/jk-logo-white.svg")
-
-    //- object#jk-bracket(type="image/svg+xml", data="images/bracket.svg")
-    //-   img#jk-bracket-fb(src="images/bracket-white@3x.png")
-
-    img#jk-bracket(src="images/bracket.svg") 
-
+    img#jk-logo(src="images/jk-logo-white.svg", alt="Jamie Kelly")
+    img#jk-bracket(src="images/bracket.svg", alt="Full-stack Web Development") 
     h1#fed
       | front-end developer
       span |
 
-    a#go(href="javascript:void(0);") Go
+    a#go(href="#about") Go
 
 
   nav#navbar.navbar.navbar-default
@@ -25,36 +17,36 @@ block content
       .row       
         .col-xs-3
           .nav-logo
-            object#nav-jk(data="images/jk-logo-black.svg", type="image/svg+xml")
-              img#nav-jk-fb(src="images/jk-logo-black@1x.png")
-            object#nav-bracket(data="images/bracket-black.svg", type="image/svg+xml")
-              img#nav-bracket-fb(src="images/bracket-black@1x.png")
-            h1
+            a(href="#intro")
+              img#nav-jk(src="images/jk-logo-black.svg", alt="Jamie Kelly")
+              img#nav-bracket(src="images/bracket-black.svg", alt="Full-stack Web Development")
+
+            h2
               | front-end developer
               span |
         .col-xs-9
           ul
             li 
-              a#resume(href="javascript:void(0);") Resume 
+              a#resume(href="#work-experience") Resume 
             li
-              a#contact(href="javascript:void(0);") Contact
+              a#contact(href="#footer") Contact
 
 
-  section#about
+  div#about
     .container
       .row
         .col-lg-10.col-lg-offset-1.col-xs-12
           p Hi, I'm 
             b Jamie Kelly
-            | , a Canadian front-end developer based in the SF Bay Area with a penchant for code.  Since 2011 I have been converting pizza and caffeine into functional websites.
+            | , a Canadian front-end developer based in the SF Bay Area with a penchant for code.  Since 2011, I have been converting pizza and caffeine into functional websites.
 
 
   section#work-experience
     .container
       .row.wow.fadeInUp
-        .col-xs-3.col-sm-1.col-lg-1
+        .col-xs-3.col-sm-1.col-lg-1.no-padding-right
           i.icon.icon-work-experience
-        .col-xs-9.col-sm-11.col-lg-11
+        .col-xs-9.col-sm-11.col-lg-11.no-padding-left
           h3 Work Experience
 
       .row.spacer.wow.fadeInUp  
@@ -100,9 +92,9 @@ block content
   section#education
     .container
       .row.wow.fadeInUp
-        .col-xs-3.col-sm-1.col-lg-1
+        .col-xs-3.col-sm-1.col-lg-1.no-padding-right
           i.icon.icon-education                   
-        .col-xs-9.col-sm-11.col-lg-11
+        .col-xs-9.col-sm-11.col-lg-11.no-padding-left
           h3 Education
 
       .row.spacer.wow.fadeInUp
@@ -158,9 +150,9 @@ block content
   section#skills-techniques
     .container
       .row.wow.fadeInUp
-        .col-xs-3.col-sm-1.col-lg-1
+        .col-xs-3.col-sm-1.col-lg-1.no-padding-right
           i.icon.icon-skills
-        .col-xs-9.col-sm-11.col-lg-11
+        .col-xs-9.col-sm-11.col-lg-11.no-padding-left
           h3 Skills &amp; Techniques
 
       .row.spacer.wow.fadeInUp
@@ -262,9 +254,9 @@ block content
   section#awards-recognition
     .container
       .row.wow.fadeInUp
-        .col-xs-3.col-sm-1.col-lg-1
+        .col-xs-3.col-sm-1.col-lg-1.no-padding-right
           i.icon.icon-awards
-        .col-xs-9.col-sm-11.col-lg-11
+        .col-xs-9.col-sm-11.col-lg-11.no-padding-left
           h3 Awards &amp; Recognition
       
       .row.wow.fadeInUp
