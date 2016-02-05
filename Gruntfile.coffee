@@ -2,6 +2,7 @@ module.exports = (grunt) ->
 	grunt.initConfig
 		pkg: grunt.file.readJSON("package.json") 
 		path: require "path"
+		cb: "v1710"
 
 
 		# list our available tasks
@@ -60,8 +61,8 @@ module.exports = (grunt) ->
 				]
 				cwd: './'
 				exclude: [
-					# "dist/jquery.js"
-					# "dist/js/bootstrap.js"
+					"dist/jquery.js"
+					"dist/js/bootstrap.js"
 				]
 				ignorePath: /^(\.\.\/\.\.\/)/
 
@@ -113,6 +114,12 @@ module.exports = (grunt) ->
 				files: [
 					"public<%= path.sep %>css<%= path.sep %>app.css" : "less<%= path.sep %>bootstrap.less",
 				]
+			prebuild:
+				options:
+					compress: false
+				files: [
+					"build<%= path.sep %>css<%= path.sep %>app.css" : "less<%= path.sep %>bootstrap.less",
+				]				
 
 
 		# watches files and runs tasks when the files change
@@ -132,7 +139,7 @@ module.exports = (grunt) ->
 				files: [
 					"less<%= path.sep %>**<%= path.sep %>*.less"
 				]
-				tasks: ['less:dev', "postcss:dist",] 
+				tasks: ['less:dev', "postcss:dist"] 
 				options:
 					spawn: false					
 
@@ -151,22 +158,72 @@ module.exports = (grunt) ->
 					spawn: false
 
 
+		# compresses images for distribution
+		imagemin: 
+			build:
+				options:
+					cache: true
+					optimizationLevel: 3
+				files: [{
+					expand: true
+					cwd: 'public<%= path.sep %>images<%= path.sep %>'
+					src: ['**<%= path.sep %>*.{png,jpg,gif,ico,pxm}'] 
+					dest: 'public<%= path.sep %>images<%= path.sep %>'
+				}]  
+
+
+		# copies image files
+		copy:
+			# options: {
+			# 	processContentExclude: ['**<%= path.sep %>*.{png,gif,jpg,ico}']
+			# }
+			images:
+				files: [{
+					expand: true
+					cwd: 'public<%= path.sep %>images<%= path.sep %>'
+					src: ['**<%= path.sep %>*.{svg,png,jpg}'] 
+					dest: 'build<%= path.sep %>images<%= path.sep %>'   
+				}]
+			fonts:
+				files: [{
+					expand: true
+					cwd: 'public<%= path.sep %>fonts<%= path.sep %>'
+					src: ['**<%= path.sep %>*.*']
+					dest: 'build<%= path.sep %>fonts<%= path.sep %>'
+				}] 	 			
+
+				
+
+
+		# compile jade to html
+		jade:
+			compile:
+				options:
+					data:
+						debug: false
+					pretty: true
+				files:
+					"build<%= path.sep %>index.html" : ["views<%= path.sep %>index.jade"]
+
+
 		# concat bower components
 		bower_concat: 
 			build: 
-		    	dest: 'public/js/lib.js' 
-		    	dependencies: 
-		    		'materialize' : 'jquery'
-		    		'angular-materialize' : 'materialize'
+		    	dest: 'build<%= path.sep %>js<%= path.sep %>lib.js'
+		    	# dependencies: 
+		    	# 	'materialize' : 'jquery'
+		    	# 	'angular-materialize' : 'materialize'
 		    	include: [
-		    		'jquery',
-		    		'materialize',
-		    		'angular',
-		    		'angular-route',
-		    		'angular-materialize',
-		    		'angular-animate'
+		    		'wow'		    		
 		    	]
 
+
+		# remove unused css
+		uncss:
+			build:
+				files: { 
+					'build<%= path.sep %>css<%= path.sep %>app.optimized.css' : ['build<%= path.sep %>index.html']
+				}
 
 
 		# minify js
@@ -174,35 +231,46 @@ module.exports = (grunt) ->
 			build:
 				options:
 					beautify: false
-				files:	
-					"public<%= path.sep %>js<%= path.sep %>lib.min.js" : 'public<%= path.sep %>js<%= path.sep %>lib.js'				
+				files: {	
+					"build<%= path.sep %>js<%= path.sep %>app<%= cb %>.min.js" : ['public<%= path.sep %>js<%= path.sep %>app.js'],
+					"build<%= path.sep %>js<%= path.sep %>lib<%= cb %>.min.js" : ['build<%= path.sep %>js<%= path.sep %>lib.js'],
+				}
 
 
 		# compress our css files		
 		cssmin:
 			build:
 				files:
-					"public<%= path.sep %>css<%= path.sep %>app.min.css": [
-						'public' + '<%= path.sep %>css<%= path.sep %>*.css'
-						'!public' + '<%= path.sep %>css<%= path.sep %>app.min.css'
+					"build<%= path.sep %>css<%= path.sep %>app<%= cb %>.min.css": [
+						'build' + '<%= path.sep %>css<%= path.sep %>app.optimized.css'
+						'!build' + '<%= path.sep %>css<%= path.sep %>app<%= cb %>.min.css'
+						'!build' + '<%= path.sep %>css<%= path.sep %>app.css'
 					]	
 
 
 		# replace dev dep with build dependencies
-		'string-replace': 
+		'string-replace':
 			dev:
 				files:
 					'views<%= path.sep %>layout.jade' : 'views<%= path.sep %>layout.jade'
 				options:
 					replacements: [
 						{
-							pattern: 'link(rel="stylesheet", href="css/app.min.css")' 
-							replacement: 'link(rel="stylesheet", href="css/app.css")' 
+							pattern: 'link(rel="stylesheet", href="css/app.css")'  
+							replacement: 'link(rel="stylesheet", href="css/app.css")'
 						},
 						{
-							pattern: "script(src='js/lib.min.js')"
-							replacement: ""
-						}																		
+							pattern: '// livereload'
+							replacement: "script(src='//localhost:35729/livereload.js')" 
+						},
+						{
+							pattern: "script(src='js/lib.js')"  
+							replacement: "" #wiredep handles this
+						},
+						{
+							pattern: "script(src='js/app.js')" 							
+							replacement: "script(src='js/app.js')" 
+						}
 					]		
 			build:
 				files:
@@ -211,33 +279,43 @@ module.exports = (grunt) ->
 					replacements: [
 						{
 							pattern: 'link(rel="stylesheet", href="css/app.css")' 
-							replacement: 'link(rel="stylesheet", href="css/app.min.css")' 
+							replacement: 'link(rel="stylesheet", href="css/app.css")' 
 						},
 						{
-							pattern: "script(src='../bower_components/jquery/dist/jquery.js')"
-							replacement: ""
+							pattern: "script(src='//localhost:35729/livereload.js')" 
+							replacement: '// livereload' 
 						},
 						{
-							pattern: "script(src='../bower_components/Materialize/bin/materialize.js')"
-							replacement: ""
+							pattern: "script(src='../bower_components/wow/dist/wow.js')" 
+							replacement: "script(src='js/lib.js')" 
 						},
 						{
-							pattern: "script(src='../bower_components/angular/angular.js')"
-							replacement: ""
+							pattern: "script(src='js/app.js')" 
+							replacement: "script(src='js/app.js')" 
 						},
 						{
-							pattern: "script(src='../bower_components/angular-route/angular-route.js')"
-							replacement: ""
+							pattern: "link(rel='stylesheet', href='../bower_components/animate.css/animate.css')" 
+							replacement: "" 
+						}						
+					]	
+			postbuild:
+				files:
+					'build<%= path.sep %>index.html' : 'build<%= path.sep %>index.html'
+				options:
+					replacements: [
+						{
+							pattern: 'app.css' 
+							replacement: 'app<%= cb %>.min.css' 
 						},
 						{
-							pattern: "script(src='../bower_components/angular-materialize/src/angular-materialize.js')"
-							replacement: ""
+							pattern: "app.js" 
+							replacement: "app<%= cb %>.min.js" 
 						},
 						{
-							pattern: "script(src='../bower_components/angular-animate/angular-animate.js')"
-							replacement: "script(src='js/lib.min.js')"
-						}
-					]								
+							pattern: "lib.js" 
+							replacement: "lib<%= cb %>.min.js" 
+						}					
+					]
 
 
 		# automagically prefix our css
@@ -249,7 +327,7 @@ module.exports = (grunt) ->
         			require('autoprefixer')({browsers: ['last 2 versions']}), # add vendor prefixes
         		]
 			dist:
-				src: ['public<%= path.sep %>css<%= path.sep %>*.css', '!public<%= path.sep %>css<%= path.sep %>app.min.css'] 
+				src: ['public<%= path.sep %>css<%= path.sep %>*.css', '!public<%= path.sep %>css<%= path.sep %>app<%= cb %>.min.css'] 
 			vet:
 				src: ['.tmp<%= path.sep %>css<%= path.sep %>**<%= path.sep %>*.css'] 
 
@@ -263,10 +341,6 @@ module.exports = (grunt) ->
 				src: [
 					'.tmp<%= path.sep %>css<%= path.sep %>**<%= path.sep %>*.css'
 					'!.tmp<%= path.sep %>css<%= path.sep %>bootstrap.css'
-					'!.tmp<%= path.sep %>css<%= path.sep %>css<%= path.sep %>owl-theme.css'
-					'!.tmp<%= path.sep %>css<%= path.sep %>css<%= path.sep %>owl-carousel.css'
-					'!.tmp<%= path.sep %>css<%= path.sep %>css<%= path.sep %>jquery-filestyle.css'
-					'!.tmp<%= path.sep %>css<%= path.sep %>css<%= path.sep %>jquery-ui.css' 
 				]				
 
 
@@ -278,6 +352,19 @@ module.exports = (grunt) ->
 
 	# register our grunt tasks
 	grunt.registerTask("default", ["availabletasks"])
-	grunt.registerTask("serve-dev", ["wiredep", "less:dev", "postcss:dist", "concurrent:dev"])
-	grunt.registerTask("build", ["bower_concat:build", "uglify:build", "cssmin:build", "string-replace:build", "nodemon"])
+	grunt.registerTask("serve-dev", ["string-replace:dev", "wiredep", "less:dev", "postcss:dist", "concurrent:dev"])
+	grunt.registerTask("build", ["bower_concat:build", "imagemin:build", "copy:images",  "copy:fonts", "less:prebuild", "string-replace:build", "jade:compile", "uncss:build", "cssmin:build", "uglify:build", "string-replace:postbuild"])
 	grunt.registerTask("vetcss", ["clean:tmp", "less:vet", "postcss:vet", "csslint:tmp"])
+
+	# legend
+	# bower_concat:build - combile bower dependencies to lib.js (not minified)
+		# imagemin:build - compress images in public folder
+	# copy:images - compies compressed images to build/images
+	# copy:fonts - copies fonts
+	# less:prebuild - compiles less to build/css/app.css (not minified)
+	# string-replace:build - prepares jade file for compilation (will not work until files have been minified)
+	# jade:compile - compiles jade index.html file 
+	# uncss:build - remove unused css
+	# cssmin:build - minify styles
+	# uglify:build - minify js
+	# string-replace:postbuild - add in .min postfixes

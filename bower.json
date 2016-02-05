@@ -1,23 +1,23 @@
 {
-  "name": "kellyjg",
-  "version": "0.6.0",
-  "description": "Vector & Bitmap PLAR",
-  "authors": [
-    "Jamie Kelly <jamie@studio174.ca>"
-  ],
-  "homepage": "https://github.com/studio174/kellyjg",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "bootstrap": "~3.3.6",
-    "animate.css": "~3.5.1",
-    "wow": "~1.1.2",
-    "modernizer": "~2.8.2"
-  }
+    "name": "kellyjg",
+    "version": "1.7.10",
+    "description": "Vector & Bitmap PLAR",
+    "authors": [
+        "Jamie Kelly <jamie@studio174.ca>"
+    ],
+    "homepage": "https://github.com/studio174/kellyjg",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap": "~3.3.6",
+        "animate.css": "~3.5.1",
+        "wow": "~1.1.2",
+        "modernizer": "~2.8.2"
+    }
 }

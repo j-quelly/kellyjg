@@ -1,27 +1,49 @@
 # kellyjg
-- Bitmap & Vector PLAR
+- Bitmap & Vector PLAR 
 
-### Current Version: 0.6.0
+### Current Version: 1.7.10 
+
+## Getting Started
+1. ```$ bower install```
+2. ```$ npm install```
+
+## Default Usage
+1. http://www.kellyjg.com
+
+## Alternative Usage
+1. ```$ grunt serve-dev```
 
 ## Changelog
-- v0.6.0 (2/1/2016) 
+- v1.7.10 (2/2/2016 - 2/4/2016)  
+	- fixes FOUC bug 
+	- fixes nav svg in opera app
+	- fixes go button callback
+	- fixes IE9 style and animation bugs
+	- cleans up less, jade, js
+	- fixes IE function
+	- unobtrustive
+	- adds build tasks
+	- fixes css bug caused by minification
+	- validates
+	- adds new scroll function
+- v0.6.3 (2/1/2016) 
 	- adds some garbage support (IE)
 	- revamps svg solution (incomplete)
 	- adds github icon and social links
 	- finalizes most responsive styles
 	- adds a ton of javascript for cross-browser quirks
 	- discovers many bugs
-- v0.5.0 (1/29/2016 - 1/31/2016) 
+- v0.5.3 (1/29/2016 - 1/31/2016) 
 	- adds navbar logo animation
 	- finishes copy
 	- semantically corrects document
 	- adds animation
 	- adds more images
 	- tests vector fall back images
-- v0.4.0 (1/28/2016) 
+- v0.4.3 (1/28/2016) 
 	- adds desktop logo & animation 
 	- fixes go button event event
-- v0.3.0 (1/27/2016)
+- v0.3.2 (1/27/2016)
 	- adds task for vetting css
 	- adds prefixes to dist css
 	- fixes go button bug

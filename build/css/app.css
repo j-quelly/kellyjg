@@ -182,10 +182,14 @@ th {
   padding: 0;
 }
 * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 *:before,
 *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 html {
@@ -241,6 +245,8 @@ img {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   display: inline-block;
   max-width: 100%;
@@ -1376,6 +1382,8 @@ label {
   font-weight: bold;
 }
 input[type="search"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 input[type="radio"],
@@ -1421,12 +1429,16 @@ output {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }
 .form-control::-moz-placeholder {
@@ -1683,10 +1695,12 @@ select[multiple].input-lg {
 }
 .has-success .form-control {
   border-color: #3c763d;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .has-success .form-control:focus {
   border-color: #2b542c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;
 }
 .has-success .input-group-addon {
@@ -1711,10 +1725,12 @@ select[multiple].input-lg {
 }
 .has-warning .form-control {
   border-color: #8a6d3b;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .has-warning .form-control:focus {
   border-color: #66512c;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
 }
 .has-warning .input-group-addon {
@@ -1739,10 +1755,12 @@ select[multiple].input-lg {
 }
 .has-error .form-control {
   border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 .has-error .form-control:focus {
   border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
 }
 .has-error .input-group-addon {
@@ -2057,6 +2075,7 @@ select[multiple].input-lg {
   padding: 10px 15px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   margin-top: 8px;
   margin-bottom: 8px;
@@ -2127,6 +2146,7 @@ select[multiple].input-lg {
     margin-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    -webkit-box-shadow: none;
     box-shadow: none;
   }
 }
@@ -2516,6 +2536,9 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   position: fixed;
 }
 /**
+* Global Theme Variables
+*/
+/**
 * Additional Utilities 
 */
 /* uncss:ignore */
@@ -2524,7 +2547,6 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 /* uncss:ignore */
 .fouc {
-  disply: none;
   opacity: 0;
 }
 .bg {
@@ -2533,16 +2555,25 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .spacer {
   margin: 45px -15px 0 -15px;
 }
+/* uncss:ignore */
 .two-column {
   -webkit-column-count: 1;
-     -moz-column-count: 1;
-          column-count: 1;
+  /* Chrome, Safari, Opera */
+  -moz-column-count: 1;
+  /* Firefox */
+  column-count: 1;
+}
+.no-padding-right {
+  padding-right: 0;
+}
+.no-padding-left {
+  padding-left: 0;
 }
 /**
 * Mobile Introduction  
 */
 #intro {
-  background: url('../images/bg.png') no-repeat;
+  background: url('../images/bg-optimized.jpg') no-repeat;
   background-position: center center;
   background-size: cover;
   height: 460px;
@@ -2567,6 +2598,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   height: 46px;
 }
 #intro h1 {
+  opacity: 0;
   position: absolute;
   color: #fff;
   font-family: "Lato", sans-serif;
@@ -2579,13 +2611,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   left: 50%;
   right: 0;
   margin: 0 0 0 -82px;
-  -webkit-animation: type-custom 2.5s steps(60, end);
-          animation: type-custom 2.5s steps(60, end);
 }
 #intro h1 span {
   margin: 0 0 0 4px;
-  -webkit-animation: blink-custom 1.5s infinite;
-          animation: blink-custom 1.5s infinite;
+  animation: blink-custom 1.5s infinite;
 }
 #intro #go {
   display: block;
@@ -2607,8 +2636,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   transition: all 0.3s ease-in-out;
 }
 #intro #go:hover {
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  transform: scale(1.2);
 }
 /**
 * Mobile Primary Navigation
@@ -2645,8 +2673,11 @@ nav ul li {
 .navbar-fixed-top {
   display: block;
   top: 0;
-  -webkit-animation-name: navbar-custom;
-          animation-name: navbar-custom;
+  animation-name: navbar-custom;
+  position: fixed;
+  width: 100%;
+  border-radius: 0;
+  z-index: 1030;
 }
 /**
 * Mobile navigation logo 
@@ -2686,9 +2717,10 @@ nav ul li {
   margin: 100px 0 70px 0;
 }
 #work-experience h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-family: 'Noto Serif', serif;
   font-weight: bold;
+  color: #5278A2;
 }
 #work-experience p {
   font-size: 16px;
@@ -2701,6 +2733,7 @@ nav ul li {
   font-family: "Lato", sans-serif;
   font-weight: bold;
   font-size: 16px;
+  color: #333;
 }
 #work-experience dt strong em {
   font-family: inherit;
@@ -2723,9 +2756,10 @@ nav ul li {
   padding: 70px 0 70px 0;
 }
 #education h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-family: 'Noto Serif', serif;
   font-weight: bold;
+  color: #5278A2;
 }
 #education dt {
   font-family: "Lato", sans-serif;
@@ -2742,6 +2776,7 @@ nav ul li {
 #education strong {
   font-size: 16px;
   font-family: "Lato", sans-serif;
+  color: #333;
 }
 #education p {
   font-size: 16px;
@@ -2771,9 +2806,10 @@ nav ul li {
   padding: 70px 0 70px 0;
 }
 #skills-techniques h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-family: 'Noto Serif', serif;
   font-weight: bold;
+  color: #5278A2;
 }
 #skills-techniques h4 {
   font-family: "Lato", sans-serif;
@@ -2789,6 +2825,7 @@ nav ul li {
   font-family: "Lato", sans-serif;
   margin: 45px 0 0 0;
   display: block;
+  color: #333;
 }
 #skills-techniques ul {
   font-family: "Lato", sans-serif;
@@ -2806,15 +2843,17 @@ nav ul li {
   padding: 70px 0 100px 0;
 }
 #awards-recognition h3 {
-  font-size: 18px;
+  font-size: 20px;
   font-family: 'Noto Serif', serif;
   font-weight: bold;
+  color: #5278A2;
 }
 #awards-recognition strong {
   font-size: 16px;
   font-family: "Lato", sans-serif;
   margin: 45px 0 0 0;
   display: block;
+  color: #333;
 }
 #awards-recognition p {
   margin: 45px 0 0 0;
@@ -2826,7 +2865,7 @@ nav ul li {
 */
 footer {
   background: #333;
-  height: 250px;
+  height: 316px;
   position: relative;
   font-size: 16px;
   color: #fff;
@@ -2850,14 +2889,18 @@ footer a:link {
 }
 footer p {
   margin: 45px 0 0 0;
+  text-align: center;
+}
+footer #social {
+  text-align: center;
 }
 footer #oj {
   height: 66px;
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   width: 100%;
   background: #FAb07F;
-  bottom: 250px;
+  bottom: 0;
   right: 0;
 }
 footer #oj p {
@@ -2902,10 +2945,11 @@ footer #oj span {
 }
 .lg-icon-styles {
   font-size: 28px;
-  border: solid 1px #000;
+  border: solid 1px #5278A2;
   border-radius: 100%;
   padding: 10px;
   line-height: 66px;
+  color: #5278A2;
 }
 .sm-icon-styles {
   font-size: inherit;
@@ -2923,18 +2967,20 @@ footer #oj span {
 .icon-education:before {
   content: "\61";
   font-size: 28px;
-  border: solid 1px #000;
+  border: solid 1px #5278A2;
   border-radius: 100%;
   padding: 10px;
   line-height: 66px;
+  color: #5278A2;
 }
 .icon-work-experience:before {
   content: "\62";
   font-size: 28px;
-  border: solid 1px #000;
+  border: solid 1px #5278A2;
   border-radius: 100%;
   padding: 10px;
   line-height: 66px;
+  color: #5278A2;
 }
 .icon-development:before {
   content: "\64";
@@ -2949,10 +2995,11 @@ footer #oj span {
 .icon-skills:before {
   content: "\67";
   font-size: 28px;
-  border: solid 1px #000;
+  border: solid 1px #5278A2;
   border-radius: 100%;
   padding: 10px;
   line-height: 66px;
+  color: #5278A2;
 }
 .icon-twitter:before {
   content: "\6c";
@@ -2977,10 +3024,11 @@ footer #oj span {
 .icon-awards:before {
   content: "\70";
   font-size: 28px;
-  border: solid 1px #000;
+  border: solid 1px #5278A2;
   border-radius: 100%;
   padding: 10px;
   line-height: 66px;
+  color: #5278A2;
 }
 .icon-copyright:before {
   content: "\6f";
@@ -3002,106 +3050,54 @@ footer #oj span {
 */
 /* uncss:ignore */
 .animation {
-  -webkit-animation-duration: 1.25s;
-          animation-duration: 1.25s;
-  -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
+  animation-duration: 2s;
+  animation-fill-mode: both;
 }
 /* uncss:ignore */
-@-webkit-keyframes logo-custom {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -70px, 0);
-            transform: translate3d(0, -70px, 0);
-  }
-  50% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none;
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translate3d(-102px, 0, 0);
-            transform: translate3d(-102px, 0, 0);
-  }
-}
 @keyframes logo-custom {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, -70px, 0);
-            transform: translate3d(0, -70px, 0);
+    transform: translate3d(0, -70px, 0);
   }
   50% {
     opacity: 1;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate3d(-102px, 0, 0);
-            transform: translate3d(-102px, 0, 0);
+    transform: translate3d(-102px, 0, 0);
   }
 }
 /* uncss:ignore */
 .logo-custom {
-  -webkit-animation-name: logo-custom;
-          animation-name: logo-custom;
+  animation-name: logo-custom;
 }
 /* uncss:ignore */
-@-webkit-keyframes bracket-custom {
-  0% {
-    opacity: 0;
-    -webkit-transform: none;
-            transform: none;
-  }
-  50% {
-    opacity: 0;
-    -webkit-transform: none;
-            transform: none;
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translate3d(92px, 0, 0);
-            transform: translate3d(92px, 0, 0);
-  }
-}
 @keyframes bracket-custom {
   0% {
     opacity: 0;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   50% {
     opacity: 0;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate3d(92px, 0, 0);
-            transform: translate3d(92px, 0, 0);
+    transform: translate3d(92px, 0, 0);
   }
 }
 /* uncss:ignore */
 .bracket-custom {
-  -webkit-animation-name: bracket-custom;
-          animation-name: bracket-custom;
+  animation-name: bracket-custom;
 }
 /* uncss:ignore */
-@-webkit-keyframes type-custom {
-  0% {
-    opacity: 0;
-    width: 0;
-  }
-  50% {
-    opacity: 1;
-    width: 0;
-  }
-  100% {
-    opacity: 1;
-    width: 100;
-  }
+.type-custom {
+  animation: type-custom 2s steps(30, end);
+  animation-delay: 0.75s;
+  animation-fill-mode: both;
 }
+/* uncss:ignore */
 @keyframes type-custom {
   0% {
     opacity: 0;
@@ -3117,28 +3113,12 @@ footer #oj span {
   }
 }
 /* uncss:ignore */
-@-webkit-keyframes blink-custom {
-  to {
-    opacity: .0;
-  }
-}
 @keyframes blink-custom {
   to {
     opacity: .0;
   }
 }
 /* uncss:ignore */
-@-webkit-keyframes navbar-custom {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
 @keyframes navbar-custom {
   0% {
     opacity: 0;
@@ -3158,35 +3138,6 @@ footer #oj span {
   animation-fill-mode: both;
 }
 /* uncss:ignore */
-@-webkit-keyframes bounce {
-  from,
-  20%,
-  53%,
-  80%,
-  to {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  40%,
-  43% {
-    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -30px, 0);
-    transform: translate3d(0, -30px, 0);
-  }
-  70% {
-    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    -webkit-transform: translate3d(0, -15px, 0);
-    transform: translate3d(0, -15px, 0);
-  }
-  90% {
-    -webkit-transform: translate3d(0, -4px, 0);
-    transform: translate3d(0, -4px, 0);
-  }
-}
 @keyframes bounce {
   from,
   20%,
@@ -3224,18 +3175,6 @@ footer #oj span {
   transform-origin: center bottom;
 }
 /* uncss:ignore */
-@-webkit-keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-  }
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -3256,6 +3195,15 @@ footer #oj span {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   /** 
+    * Desktop Utilities
+    */
+  .no-padding-right {
+    padding-right: 15px;
+  }
+  .no-padding-left {
+    padding-left: 15px;
+  }
+  /** 
     * Desktop Introduction
     */
   #intro {
@@ -3272,6 +3220,7 @@ footer #oj span {
     height: 90px;
   }
   #intro h1 {
+    opacity: 0;
     font-size: 38px;
     font-weight: bold;
     width: 360px;
@@ -3281,72 +3230,32 @@ footer #oj span {
   /**
     * Desktop animations
     */
-  @-webkit-keyframes logo-custom {
-    0% {
-      opacity: 0;
-      -webkit-transform: translate3d(0, -270px, 0);
-              transform: translate3d(0, -270px, 0);
-    }
-    50% {
-      opacity: 1;
-      -webkit-transform: none;
-              transform: none;
-    }
-    100% {
-      opacity: 1;
-      -webkit-transform: translate3d(-222px, 0, 0);
-              transform: translate3d(-222px, 0, 0);
-    }
-  }
   @keyframes logo-custom {
     0% {
       opacity: 0;
-      -webkit-transform: translate3d(0, -270px, 0);
-              transform: translate3d(0, -270px, 0);
+      transform: translate3d(0, -270px, 0);
     }
     50% {
       opacity: 1;
-      -webkit-transform: none;
-              transform: none;
+      transform: none;
     }
     100% {
       opacity: 1;
-      -webkit-transform: translate3d(-222px, 0, 0);
-              transform: translate3d(-222px, 0, 0);
-    }
-  }
-  @-webkit-keyframes bracket-custom {
-    0% {
-      opacity: 0;
-      -webkit-transform: none;
-              transform: none;
-    }
-    50% {
-      opacity: 0;
-      -webkit-transform: none;
-              transform: none;
-    }
-    100% {
-      opacity: 1;
-      -webkit-transform: translate3d(212px, 0, 0);
-              transform: translate3d(212px, 0, 0);
+      transform: translate3d(-222px, 0, 0);
     }
   }
   @keyframes bracket-custom {
     0% {
       opacity: 0;
-      -webkit-transform: none;
-              transform: none;
+      transform: none;
     }
     50% {
       opacity: 0;
-      -webkit-transform: none;
-              transform: none;
+      transform: none;
     }
     100% {
       opacity: 1;
-      -webkit-transform: translate3d(212px, 0, 0);
-              transform: translate3d(212px, 0, 0);
+      transform: translate3d(212px, 0, 0);
     }
   }
   /**
@@ -3358,19 +3267,21 @@ footer #oj span {
   /**
     * Desktop Navigation logo 
     */
-  .nav-logo:hover > #nav-bracket {
+  /* uncss:ignore */
+  .nav-logo:hover #nav-bracket {
     opacity: 1;
-    -webkit-transform: translate3d(204px, 0, 0);
-            transform: translate3d(204px, 0, 0);
+    transform: translate3d(194px, 0, 0);
   }
-  .nav-logo:hover > h1 {
+  /* uncss:ignore */
+  .nav-logo:hover > h2 {
     opacity: 1;
-    -webkit-animation: type-custom 2.5s steps(60, end);
-            animation: type-custom 2.5s steps(60, end);
+    animation: type-custom 2s steps(30, end);
   }
+  /* uncss:ignore */
   .nav-logo:hover {
     width: 268px;
   }
+  /* uncss:ignore */
   #nav-bracket {
     position: relative;
     float: left;
@@ -3381,7 +3292,8 @@ footer #oj span {
     opacity: 0;
     transition: all 0.5s ease-in-out;
   }
-  .nav-logo h1 {
+  /* uncss:ignore */
+  .nav-logo h2 {
     position: relative;
     float: left;
     left: -36px;
@@ -3394,10 +3306,10 @@ footer #oj span {
     margin: 12px 0 0 0;
     opacity: 0;
   }
-  .nav-logo h1 span {
+  /* uncss:ignore */
+  .nav-logo h2 span {
     margin: 0 0 0 4px;
-    -webkit-animation: blink-custom 1.5s infinite;
-            animation: blink-custom 1.5s infinite;
+    animation: blink-custom 1.5s infinite;
   }
   /**
     * Desktop About Section 
@@ -3435,9 +3347,11 @@ footer #oj span {
     */
   footer {
     font-size: 22px;
+    height: 250px;
   }
   footer p {
     margin: 70px 0 0 0;
+    text-align: left;
   }
   footer #oj {
     height: 250px;
@@ -3448,13 +3362,19 @@ footer #oj span {
   footer #oj p {
     margin: 111.5px 0 0 0;
   }
+  footer #social {
+    text-align: left;
+  }
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+  /* uncss:ignore */
   .two-column {
     -webkit-column-count: 2;
-       -moz-column-count: 2;
-            column-count: 2;
+    /* Chrome, Safari, Opera */
+    -moz-column-count: 2;
+    /* Firefox */
+    column-count: 2;
   }
 }
 /* Large devices (large desktops, 1200px and up) */
@@ -3462,164 +3382,80 @@ footer #oj span {
 * Custom hacky animations because bootstrap
 */
 /* uncss:ignore */
-@-webkit-keyframes sf-logo-custom {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -270px, 0);
-            transform: translate3d(0, -270px, 0);
-  }
-  50% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none;
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translate3d(-222px, 0, 0);
-            transform: translate3d(-222px, 0, 0);
-  }
-}
 @keyframes sf-logo-custom {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, -270px, 0);
-            transform: translate3d(0, -270px, 0);
+    transform: translate3d(0, -270px, 0);
   }
   50% {
     opacity: 1;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate3d(-222px, 0, 0);
-            transform: translate3d(-222px, 0, 0);
+    transform: translate3d(-222px, 0, 0);
   }
 }
 /* uncss:ignore */
 .sf-logo-custom {
-  -webkit-animation-name: sf-logo-custom;
-          animation-name: sf-logo-custom;
+  animation-name: sf-logo-custom;
 }
 /* uncss:ignore */
-@-webkit-keyframes sm-logo-custom {
-  0% {
-    opacity: 0;
-    -webkit-transform: translate3d(0, -70px, 0);
-            transform: translate3d(0, -70px, 0);
-  }
-  50% {
-    opacity: 1;
-    -webkit-transform: none;
-            transform: none;
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translate3d(-102px, 0, 0);
-            transform: translate3d(-102px, 0, 0);
-  }
-}
 @keyframes sm-logo-custom {
   0% {
     opacity: 0;
-    -webkit-transform: translate3d(0, -70px, 0);
-            transform: translate3d(0, -70px, 0);
+    transform: translate3d(0, -70px, 0);
   }
   50% {
     opacity: 1;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate3d(-102px, 0, 0);
-            transform: translate3d(-102px, 0, 0);
+    transform: translate3d(-102px, 0, 0);
   }
 }
 /* uncss:ignore */
 .sm-logo-custom {
-  -webkit-animation-name: sm-logo-custom;
-          animation-name: sm-logo-custom;
+  animation-name: sm-logo-custom;
 }
 /* uncss:ignore */
-@-webkit-keyframes sf-bracket-custom {
-  0% {
-    opacity: 0;
-    -webkit-transform: none;
-            transform: none;
-  }
-  50% {
-    opacity: 0;
-    -webkit-transform: none;
-            transform: none;
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translate3d(212px, 0, 0);
-            transform: translate3d(212px, 0, 0);
-  }
-}
 @keyframes sf-bracket-custom {
   0% {
     opacity: 0;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   50% {
     opacity: 0;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate3d(212px, 0, 0);
-            transform: translate3d(212px, 0, 0);
+    transform: translate3d(212px, 0, 0);
   }
 }
 /* uncss:ignore */
 .sf-bracket-custom {
-  -webkit-animation-name: sf-bracket-custom;
-          animation-name: sf-bracket-custom;
+  animation-name: sf-bracket-custom;
 }
 /* uncss:ignore */
-@-webkit-keyframes sm-bracket-custom {
-  0% {
-    opacity: 0;
-    -webkit-transform: none;
-            transform: none;
-  }
-  50% {
-    opacity: 0;
-    -webkit-transform: none;
-            transform: none;
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translate3d(92px, 0, 0);
-            transform: translate3d(92px, 0, 0);
-  }
-}
 @keyframes sm-bracket-custom {
   0% {
     opacity: 0;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   50% {
     opacity: 0;
-    -webkit-transform: none;
-            transform: none;
+    transform: none;
   }
   100% {
     opacity: 1;
-    -webkit-transform: translate3d(92px, 0, 0);
-            transform: translate3d(92px, 0, 0);
+    transform: translate3d(92px, 0, 0);
   }
 }
 /* uncss:ignore */
 .sm-bracket-custom {
-  -webkit-animation-name: sm-bracket-custom;
-          animation-name: sm-bracket-custom;
+  animation-name: sm-bracket-custom;
 }
 /**
 * More styles for garbage IE9
@@ -3636,6 +3472,11 @@ footer #oj span {
   right: -442px !important;
 }
 /* uncss:ignore */
+.ieGarbage #fed,
+.no-js #fed {
+  opacity: 1 !important;
+}
+/* uncss:ignore */
 .ieGarbage #navbar,
 .no-js #navbar {
   display: block !important;
@@ -3644,9 +3485,12 @@ footer #oj span {
   top: 0 !important;
   width: 100% !important;
   border-radius: 0 !important;
+  z-index: 1030 !important;
 }
 /* uncss:ignore */
 .ieGarbage #nav-bracket,
 .no-js #nav-bracket {
   left: 175px !important;
+  display: block !important;
+  opacity: 1 !important;
 }
