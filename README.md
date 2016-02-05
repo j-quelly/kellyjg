@@ -16,6 +16,7 @@
 ## Changelog
 - v1.7.11 (2/4/2016)  
 	- fixes callback timeout
+	- adds a task for cleaning up build folder for cache busting
 - v1.7.10 (2/2/2016 - 2/4/2016)  
 	- fixes FOUC bug 
 	- fixes nav svg in opera app
