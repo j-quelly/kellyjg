@@ -140,7 +140,7 @@ if (!oldIEV(['MSIE 8', 'MSIE 7.'])) {
             scrollY = currentYPosition();
 
         // if the y offset is equal to the window height - 75px
-        if (scrollY > (scrollDistance - 75)) {
+        if (scrollY > (scrollDistance - 70)) {
             // display the fixed navbar
             fixNavbar(true);
         } else {
