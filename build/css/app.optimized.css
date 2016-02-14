@@ -1499,9 +1499,16 @@ footer #oj span {
 
 /* uncss:ignore */
 
-.ieGarbage #nav-bracket,
-.no-js #nav-bracket {
+.ieGarbage #nav-bracket {
   left: 175px !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* uncss:ignore */
+
+.no-js #nav-bracket {
+  left: -25px !important;
   display: block !important;
   opacity: 1 !important;
 }

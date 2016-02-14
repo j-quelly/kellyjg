@@ -3,15 +3,16 @@
  */
 
 
-/**
- * Events
- */
-
 // if the browser does not support SVG
 if (!supportsSVG()) {
     // place and size the svg fallbacks 
     sizeSVG();
 }
+
+
+/**
+ * Events
+ */
 
 // once the entire website has loaded
 window.onload = function() {
