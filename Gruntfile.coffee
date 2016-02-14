@@ -2,7 +2,7 @@ module.exports = (grunt) ->
 	grunt.initConfig
 		pkg: grunt.file.readJSON("package.json") 
 		path: require "path"
-		cb: "v1714"
+		cb: "v1715"
 
 
 		# list our available tasks
@@ -331,8 +331,10 @@ module.exports = (grunt) ->
 					require('pixrem')(), # add fallbacks for rem units
         			require('autoprefixer')({browsers: ['last 2 versions']}), # add vendor prefixes
         		]
-			dist:
+			dev:
 				src: ['public<%= path.sep %>css<%= path.sep %>*.css', '!public<%= path.sep %>css<%= path.sep %>app<%= cb %>.min.css'] 
+			dist:
+				src: ['build<%= path.sep %>css<%= path.sep %>app.css', '!public<%= path.sep %>css<%= path.sep %>app<%= cb %>.min.css'] 
 			vet:
 				src: ['.tmp<%= path.sep %>css<%= path.sep %>**<%= path.sep %>*.css'] 
 
@@ -357,16 +359,31 @@ module.exports = (grunt) ->
 
 	# register our grunt tasks
 	grunt.registerTask("default", ["availabletasks"])
-	grunt.registerTask("serve-dev", ["string-replace:dev", "wiredep", "less:dev", "postcss:dist", "concurrent:dev"])
-	grunt.registerTask("build", ["clean:build", "bower_concat:build", "imagemin:build", "copy:images",  "copy:fonts", "less:prebuild", "string-replace:build", "jade:compile", "uncss:build", "cssmin:build", "uglify:build", "string-replace:postbuild"])
+	grunt.registerTask("serve-dev", ["string-replace:dev", "wiredep", "less:dev", "postcss:dev", "concurrent:dev"])
+	grunt.registerTask("build", [
+		"clean:build", 
+		"bower_concat:build", 
+		"imagemin:build", 
+		"copy:images", 
+		"copy:fonts", 
+		"less:prebuild",
+		"postcss:dist", 
+		"string-replace:build", 
+		"jade:compile", 
+		"uncss:build", 
+		"cssmin:build", 
+		"uglify:build", 
+		"string-replace:postbuild"])
 	grunt.registerTask("vetcss", ["clean:tmp", "less:vet", "postcss:vet", "csslint:tmp"])
 
 	# legend
-	# bower_concat:build - combile bower dependencies to lib.js (not minified)
-		# imagemin:build - compress images in public folder
+	# clean:build - clean the build folder
+	# bower_concat:build - compile bower dependencies to lib.js (not minified)
+	# imagemin:build - compress images in public folder
 	# copy:images - compies compressed images to build/images
-	# copy:fonts - copies fonts
+	# copy:fonts - copies fonts to build
 	# less:prebuild - compiles less to build/css/app.css (not minified)
+
 	# string-replace:build - prepares jade file for compilation (will not work until files have been minified)
 	# jade:compile - compiles jade index.html file 
 	# uncss:build - remove unused css

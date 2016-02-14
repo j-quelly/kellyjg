@@ -1,7 +1,7 @@
 # kellyjg
 - Bitmap & Vector PLAR 
 
-### Current Version: 1.7.14 
+### Current Version: 1.7.15 
 
 ## Getting Started
 1. ```$ bower install```
@@ -14,8 +14,9 @@
 1. ```$ grunt serve-dev```
 
 ## Changelog
-- v1.7.14 (2/14/2016)
+- v1.7.15 (2/14/2016)
 	- fixes ipad bugs
+- v1.7.14 (2/14/2016)	
 	- adds language
 	- fixes no js bug on logo
 - v1.7.13 (2/6/2016)  
