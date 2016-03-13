@@ -2,7 +2,7 @@ module.exports = (grunt) ->
 	grunt.initConfig
 		pkg: grunt.file.readJSON("package.json") 
 		path: require "path"
-		cb: "v1715"
+		cb: "v1716"
 
 
 		# list our available tasks
