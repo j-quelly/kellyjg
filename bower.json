@@ -1,11 +1,11 @@
 {
     "name": "kellyjg",
-    "version": "1.7.16",
+    "version": "2.7.16",
     "description": "Vector & Bitmap PLAR",
     "authors": [
         "Jamie Kelly <jamie@studio174.ca>"
     ],
-    "homepage": "https://github.com/studio174/kellyjg",
+    "homepage": "http://www.kellyjg.com",
     "private": true,
     "ignore": [
         "**/.*",
