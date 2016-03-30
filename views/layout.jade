@@ -5,18 +5,16 @@ html.no-js(lang="en")
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
-    link(href="https://fonts.googleapis.com/css?family=Lato:400,700%7CNoto+Serif:700,400", rel="stylesheet", type="text/css")
-    script.
-        document.documentElement.className = 'fouc';    
-
+    link(href="https://fonts.googleapis.com/css?family=Lato:400,700,900%7CNoto+Serif:700,400", rel="stylesheet", type="text/css")
     //- lib
     // bower:css
     
     // endbower
 
     //- app
-    link(rel="stylesheet", href="css/app.css")
-
+    link(rel="stylesheet", href="css/app.css")        
+    script.
+        document.documentElement.className = 'fouc';    
   body
     
     <!--[if lte IE 8]>
@@ -61,5 +59,6 @@ html.no-js(lang="en")
     // endbower
     
     //- app
-    script(src='js/app.js')
+    //- script(src='js/app.js') 
+    script(src='js/app2.js')
     // livereload

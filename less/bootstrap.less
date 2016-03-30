@@ -53,6 +53,7 @@
 /**
 * Global Theme Variables
 */
+
 @brand-accent: #5278A2;
 @brand-accent-2: #FAB07F;
 @timeout: 2s;
@@ -65,11 +66,17 @@
 /**
 * Additional Utilities 
 */
+
+
 /* uncss:ignore */
+
 .js {
     transition: opacity 125ms ease-in;
 }
+
+
 /* uncss:ignore */
+
 .fouc {
     opacity: 0;
 }
@@ -82,10 +89,14 @@
     margin: 45px -15px 0 -15px;
 }
 
+
 /* uncss:ignore */
+
 .two-column {
-    -webkit-column-count: 1; /* Chrome, Safari, Opera */
-    -moz-column-count: 1; /* Firefox */
+    -webkit-column-count: 1;
+    /* Chrome, Safari, Opera */
+    -moz-column-count: 1;
+    /* Firefox */
     column-count: 1;
 }
 
@@ -96,7 +107,6 @@
 .no-padding-left {
     padding-left: 0;
 }
-
 
 
 /**
@@ -115,7 +125,7 @@
         right: 0;
         margin: 0 auto;
         top: 200px;
-        width: 42px; 
+        width: 42px;
         height: 45px;
     }
     #jk-bracket {
@@ -146,7 +156,6 @@
             animation: blink-custom 1s infinite;
         }
     }
-
     #go {
         display: block;
         border: solid 1px #fff;
@@ -196,15 +205,25 @@ nav {
             text-align: right;
             font-family: @font-family-sans-serif;
             font-size: 14px;
+            a.active {
+                font-weight: 700;
+                color: @brand-accent-2;
+            }
         }
     }
 }
+
+
 /* uncss:ignore */
+
 .navbar {
     background: #fff;
     margin: 0;
 }
+
+
 /* uncss:ignore */
+
 .navbar-fixed-top {
     display: block;
     top: 0;
@@ -375,7 +394,7 @@ nav {
         font-family: @font-family-sans-serif;
         margin: 45px 0 0 0;
         display: block;
-        color: @secondary-heading; 
+        color: @secondary-heading;
     }
     ul {
         font-family: @font-family-sans-serif;
@@ -445,7 +464,7 @@ footer {
     }
     p {
         margin: 45px 0 0 0;
-        text-align: center; 
+        text-align: center;
     }
     #social {
         text-align: center;
@@ -585,13 +604,17 @@ footer {
 * Animations
 */
 
+
 /* uncss:ignore */
+
 .animation {
     animation-duration: @timeout;
     animation-fill-mode: both;
 }
 
+
 /* uncss:ignore */
+
 @keyframes logo-custom {
     0% {
         opacity: 0;
@@ -607,12 +630,16 @@ footer {
     }
 }
 
+
 /* uncss:ignore */
+
 .logo-custom {
     animation-name: logo-custom;
 }
 
+
 /* uncss:ignore */
+
 @keyframes bracket-custom {
     0% {
         opacity: 0;
@@ -628,19 +655,25 @@ footer {
     }
 }
 
+
 /* uncss:ignore */
+
 .bracket-custom {
     animation-name: bracket-custom;
 }
 
+
 /* uncss:ignore */
+
 .type-custom {
     animation: type-custom 2s steps(30, end);
-    animation-delay: 0.75s;  
+    animation-delay: 0.75s;
     animation-fill-mode: both;
 }
 
+
 /* uncss:ignore */
+
 @keyframes type-custom {
     0% {
         opacity: 0;
@@ -656,14 +689,18 @@ footer {
     }
 }
 
+
 /* uncss:ignore */
+
 @keyframes blink-custom {
     to {
         opacity: .0;
     }
 }
 
+
 /* uncss:ignore */
+
 @keyframes navbar-custom {
     0% {
         opacity: 0;
@@ -676,87 +713,96 @@ footer {
     }
 }
 
+
 /* uncss:ignore */
+
 .animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
 }
 
+
 /* uncss:ignore */
+
 @keyframes bounce {
-  from, 20%, 53%, 80%, to {
-    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    -webkit-transform: translate3d(0,0,0);
-    transform: translate3d(0,0,0);
-  }
-
-  40%, 43% {
-    -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    -webkit-transform: translate3d(0, -30px, 0);
-    transform: translate3d(0, -30px, 0);
-  }
-
-  70% {
-    -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
-    -webkit-transform: translate3d(0, -15px, 0);
-    transform: translate3d(0, -15px, 0);
-  }
-
-  90% {
-    -webkit-transform: translate3d(0,-4px,0);
-    transform: translate3d(0,-4px,0);
-  }
+    from,
+    20%,
+    53%,
+    80%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    40%,
+    43% {
+        -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        -webkit-transform: translate3d(0, -30px, 0);
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        -webkit-transform: translate3d(0, -15px, 0);
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        -webkit-transform: translate3d(0, -4px, 0);
+        transform: translate3d(0, -4px, 0);
+    }
 }
 
+
 /* uncss:ignore */
+
 .bounce {
-  -webkit-animation-name: bounce;
-  animation-name: bounce;
-  -webkit-transform-origin: center bottom;
-  transform-origin: center bottom;
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
 }
 
+
 /* uncss:ignore */
+
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-    transform: translate3d(0, 100%, 0);
-  }
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
 
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-} 
 
 /* uncss:ignore */
+
 .fadeInUp {
-  -webkit-animation-name: fadeInUp;
-  animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
 }
+
 
 /* Small devices (tablets, 768px and up) */
 
 @media (min-width: @screen-sm-min) {
-
     /** 
     * Desktop Utilities
-    */    
+    */
     .no-padding-right {
         padding-right: 15px;
     }
-
     .no-padding-left {
         padding-left: 15px;
-    }    
-
+    }
     /** 
     * Desktop Introduction
     */
@@ -779,10 +825,8 @@ footer {
             width: 360px;
             top: 331px;
             margin: 0 0 0 -177px;
-        }   
+        }
     }
-
-
     /**
     * Desktop animations
     */
@@ -814,8 +858,6 @@ footer {
             transform: translate3d(212px, 0, 0);
         }
     }
-
-
     /**
     * Desktop Primary Navigation
     */
@@ -824,10 +866,8 @@ footer {
             li {
                 font-size: 18px;
             }
-        }    
-    } 
-
-
+        }
+    }
     /**
     * Desktop Navigation logo 
     */
@@ -853,7 +893,7 @@ footer {
         left: -20px;
         width: 42px;
         height: 45px;
-        opacity: 0; 
+        opacity: 0;
         transition: all 0.5s ease-in-out;
     }
     /* uncss:ignore */
@@ -874,70 +914,51 @@ footer {
     .nav-logo h2 span {
         margin: 0 0 0 4px;
         animation: blink-custom 1.5s infinite;
-    } 
-
-
+    }
     /**
     * Desktop About Section 
     */
- 
     #about {
-        p {            
-            line-height: 56px;            
-            font-size: 28px; 
+        p {
+            line-height: 56px;
+            font-size: 28px;
         }
     }
-
-
     /**
     * Desktop Work Experience 
     */
-
     #work-experience {
         h3 {
             font-size: 28px;
         }
     }
-
-
     /**
     * Desktop Education
     */
-
     #education {
         h3 {
             font-size: 28px; // 28px desktop
         }
     }
-
-
-
     /**
     * Desktop Skills & Techniques
     */
-
     #skills-techniques {
         h3 {
             font-size: 28px; // 28px desktop
         }
     }
-
-
     /**
     * Desktop Awards & Recognition
     */
-
     #awards-recognition {
         h3 {
             font-size: 28px; // 28px desktop
         }
     }
-
-
     /**
     * Desktop Footer
     */
-
     footer {
         font-size: 22px;
         height: 250px;
@@ -958,7 +979,6 @@ footer {
             text-align: left;
         }
     }
-
 }
 
 
@@ -968,9 +988,11 @@ footer {
     // classes
     /* uncss:ignore */
     .two-column {
-        -webkit-column-count: 2; /* Chrome, Safari, Opera */
-        -moz-column-count: 2; /* Firefox */
-        column-count:  2;
+        -webkit-column-count: 2;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 2;
+        /* Firefox */
+        column-count: 2;
     }
 }
 
@@ -980,11 +1002,13 @@ footer {
 @media (min-width: @screen-lg-min) {}
 
 
-
 /**
 * Custom hacky animations because bootstrap
 */
+
+
 /* uncss:ignore */
+
 @keyframes sf-logo-custom {
     0% {
         opacity: 0;
@@ -999,11 +1023,17 @@ footer {
         transform: translate3d(-222px, 0, 0);
     }
 }
+
+
 /* uncss:ignore */
+
 .sf-logo-custom {
     animation-name: sf-logo-custom;
 }
+
+
 /* uncss:ignore */
+
 @keyframes sm-logo-custom {
     0% {
         opacity: 0;
@@ -1018,11 +1048,17 @@ footer {
         transform: translate3d(-102px, 0, 0);
     }
 }
+
+
 /* uncss:ignore */
+
 .sm-logo-custom {
     animation-name: sm-logo-custom;
 }
+
+
 /* uncss:ignore */
+
 @keyframes sf-bracket-custom {
     0% {
         opacity: 0;
@@ -1037,11 +1073,17 @@ footer {
         transform: translate3d(212px, 0, 0);
     }
 }
+
+
 /* uncss:ignore */
+
 .sf-bracket-custom {
     animation-name: sf-bracket-custom;
 }
+
+
 /* uncss:ignore */
+
 @keyframes sm-bracket-custom {
     0% {
         opacity: 0;
@@ -1056,7 +1098,10 @@ footer {
         transform: translate3d(92px, 0, 0);
     }
 }
+
+
 /* uncss:ignore */
+
 .sm-bracket-custom {
     animation-name: sm-bracket-custom;
 }
@@ -1066,46 +1111,59 @@ footer {
 * More styles for garbage IE9
 * and browsers that do not support javascript
  */
+
+
 /* uncss:ignore */
+
 .ieGarbage #jk-logo,
 .no-js #jk-logo {
-  left: -442px !important;
+    left: -442px !important;
 }
 
+
 /* uncss:ignore */
+
 .ieGarbage #jk-bracket,
 .no-js #jk-bracket {
-  right: -442px !important;
+    right: -442px !important;
 }
 
+
 /* uncss:ignore */
+
 .ieGarbage #fed,
 .no-js #fed {
     opacity: 1 !important;
 }
 
+
 /* uncss:ignore */
+
 .ieGarbage #navbar,
 .no-js #navbar {
-  display: block !important;
-  opacity: 1 !important;
-  position: fixed !important;
-  top: 0 !important;
-  width: 100% !important;
-  border-radius: 0 !important; 
-  z-index: 1030 !important; 
+    display: block !important;
+    opacity: 1 !important;
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    z-index: 1030 !important;
 }
 
+
 /* uncss:ignore */
+
 .ieGarbage #nav-bracket {
-  left: 175px !important;
-  display: block !important;
-  opacity: 1 !important;
+    left: 175px !important;
+    display: block !important;
+    opacity: 1 !important;
 }
 
+
 /* uncss:ignore */
-.no-js #nav-bracket { 
-  left: -25px !important;
-  display: block !important;
-  opacity: 1 !important; 
+
+.no-js #nav-bracket {
+    left: -25px !important;
+    display: block !important;
+    opacity: 1 !important;
 }

@@ -55,6 +55,15 @@ window.onresize = function() {
     applyAnimations();
 };
 
+// window.onscroll = function() {
+//     var currentYPos = currentYPosition();
+//     if (currentYPos > elmYPosition('work-experience', { padding: 165 })) {
+//         // apply class
+//         var _elem = document.getElementById('resume').className = 'active';
+//     }
+
+// }
+
 // if modern browser
 if (!oldIEV(['MSIE 8', 'MSIE 7.'])) {
     // add a scroll event listener
@@ -96,7 +105,7 @@ resumeBtn.onclick = function(e) {
     }
 
     // scroll to resume
-    smoothScrollTo('work-experience', 800);
+    smoothScrollTo('work-experience', 800, { padding: 95 });
 };
 
 // cache element
@@ -112,7 +121,8 @@ contactBtn.onclick = function(e) {
     // scroll to footer, pass in some options
     smoothScrollTo('footer', 800, {
         elem: 'contact-info',
-        animation: 'bounce'
+        animation: 'bounce',
+        padding: 65
     }, addAnimation);
 };
 
@@ -128,7 +138,7 @@ if (!oldIEV(['MSIE 8', 'MSIE 7.'])) {
         }
 
         // scroll to introduction
-        smoothScrollTo('intro', 800);
+        smoothScrollTo('intro', 800, true);
     };
 }
 
@@ -204,10 +214,14 @@ function currentYPosition() {
 }
 
 // get element Y position
-function elmYPosition(eID) {
+function elmYPosition(eID, options) {
+    if (typeof(options) !== 'object') {
+        options = undefined;
+    }
+
     // vars
     var elm = document.getElementById(eID),
-        y = elm.offsetTop - 65,
+        y = elm.offsetTop - (options !== undefined ? options.padding : 65),
         node = elm;
 
     while (node.offsetParent && node.offsetParent != document.body) {
@@ -456,7 +470,7 @@ function smoothScrollTo(eID, duration, options, callback) {
 
     // vars
     var start = position(),
-        to = elmYPosition(eID),
+        to = elmYPosition(eID, options),
         change = to - start,
         currentTime = 0,
         increment = 20;

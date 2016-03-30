@@ -1,4 +1,4 @@
-/*** uncss> filename: https://fonts.googleapis.com/css?family=Lato:400,700%7CNoto+Serif:700,400 ***/
+/*** uncss> filename: https://fonts.googleapis.com/css?family=Lato:400,700,900%7CNoto+Serif:700,400 ***/
 
 @font-face {
   font-family: 'Lato';
@@ -12,6 +12,13 @@
   font-style: normal;
   font-weight: 700;
   src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v11/DvlFBScY1r-FMtZSYIYoYw.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Lato Black'), local('Lato-Black'), url(https://fonts.gstatic.com/s/lato/v11/4cKlrioa77J2iqTqBgkRWg.ttf) format('truetype');
 }
 
 @font-face {

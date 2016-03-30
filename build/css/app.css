@@ -2646,6 +2646,10 @@ nav ul li {
   font-family: "Lato", sans-serif;
   font-size: 14px;
 }
+nav ul li a.active {
+  font-weight: 700;
+  color: #FAB07F;
+}
 /* uncss:ignore */
 .navbar {
   background: #fff;
