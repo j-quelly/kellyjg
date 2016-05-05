@@ -2536,6 +2536,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   margin: 45px -15px 0 -15px;
 }
 /* uncss:ignore */
+.fadeOutJK {
+  transition: opacity 25ms ease-out;
+}
+/* uncss:ignore */
 .two-column {
   -webkit-column-count: 1;
   /* Chrome, Safari, Opera */
@@ -2594,8 +2598,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 #intro h1 span {
   margin: 0 0 0 4px;
-  -webkit-animation: blink-custom 1s infinite;
-          animation: blink-custom 1s infinite;
+  -webkit-animation: blink-custom 1.25s infinite;
+          animation: blink-custom 1.25s infinite;
 }
 #intro #go {
   display: block;
@@ -3161,6 +3165,44 @@ footer #oj span {
   }
 }
 /* uncss:ignore */
+.erase-custom {
+  -webkit-animation: erase-custom 2s steps(30, end);
+          animation: erase-custom 2s steps(30, end);
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+/* uncss:ignore */
+@-webkit-keyframes erase-custom {
+  0% {
+    opacity: 1;
+    width: 100;
+  }
+  50% {
+    opacity: 1;
+    width: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+  }
+}
+@keyframes erase-custom {
+  0% {
+    opacity: 1;
+    width: 100;
+  }
+  50% {
+    opacity: 1;
+    width: 0;
+  }
+  100% {
+    opacity: 0;
+    width: 0;
+  }
+}
+/* uncss:ignore */
 @-webkit-keyframes blink-custom {
   to {
     opacity: .0;
@@ -3415,8 +3457,8 @@ footer #oj span {
   /* uncss:ignore */
   .nav-logo:hover #nav-bracket {
     opacity: 1;
-    -webkit-transform: translate3d(194px, 0, 0);
-            transform: translate3d(194px, 0, 0);
+    -webkit-transform: translate3d(154px, 0, 0);
+            transform: translate3d(154px, 0, 0);
   }
   /* uncss:ignore */
   .nav-logo:hover > h2 {
@@ -3433,7 +3475,7 @@ footer #oj span {
     position: relative;
     float: left;
     top: 0;
-    left: -20px;
+    left: -18px;
     width: 42px;
     height: 45px;
     opacity: 0;
@@ -3456,8 +3498,8 @@ footer #oj span {
   /* uncss:ignore */
   .nav-logo h2 span {
     margin: 0 0 0 4px;
-    -webkit-animation: blink-custom 1.5s infinite;
-            animation: blink-custom 1.5s infinite;
+    -webkit-animation: blink-custom 1.25s infinite;
+            animation: blink-custom 1.25s infinite;
   }
   /**
     * Desktop About Section 

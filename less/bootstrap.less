@@ -92,6 +92,13 @@
 
 /* uncss:ignore */
 
+.fadeOutJK {
+    transition: opacity 25ms ease-out;
+}
+
+
+/* uncss:ignore */
+
 .two-column {
     -webkit-column-count: 1;
     /* Chrome, Safari, Opera */
@@ -153,7 +160,7 @@
         margin: 0 0 0 -82px;
         span {
             margin: 0 0 0 4px;
-            animation: blink-custom 1s infinite;
+            animation: blink-custom 1.25s infinite;
         }
     }
     #go {
@@ -689,6 +696,31 @@ footer {
     }
 }
 
+/* uncss:ignore */
+
+.erase-custom {
+    animation: erase-custom 2s steps(30, end);
+    animation-delay: 0.75s;
+    animation-fill-mode: both;
+}
+
+
+/* uncss:ignore */
+
+@keyframes erase-custom {
+    0% {
+        opacity: 1;
+        width: 100;
+    }
+    50% {
+        opacity: 1;
+        width: 0;
+    }
+    100% {
+        opacity: 0;
+        width: 0;
+    }
+}
 
 /* uncss:ignore */
 
@@ -874,7 +906,7 @@ footer {
     /* uncss:ignore */
     .nav-logo:hover #nav-bracket {
         opacity: 1;
-        transform: translate3d(194px, 0, 0);
+        transform: translate3d(154px, 0, 0);
     }
     /* uncss:ignore */
     .nav-logo:hover > h2 {
@@ -890,7 +922,7 @@ footer {
         position: relative;
         float: left;
         top: 0;
-        left: -20px;
+        left: -18px;
         width: 42px;
         height: 45px;
         opacity: 0;
@@ -913,7 +945,7 @@ footer {
     /* uncss:ignore */
     .nav-logo h2 span {
         margin: 0 0 0 4px;
-        animation: blink-custom 1.5s infinite;
+        animation: blink-custom 1.25s infinite;
     }
     /**
     * Desktop About Section 

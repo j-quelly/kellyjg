@@ -190,6 +190,27 @@ var app = {
 
         document.getElementById('fed').className = 'type-custom';
 
+        var timeout = 3000;
+
+        // new animations
+        setTimeout(function() {
+            document.getElementById('fed').className = 'erase-custom';            
+        }, timeout);
+
+        setTimeout(function() {
+            document.getElementById('fed').innerHTML = 'back-end developer <span>|</span>';            
+            document.getElementById('fed').className = 'type-custom';
+        }, timeout + 1750);
+
+        setTimeout(function() {
+            document.getElementById('fed').className = 'erase-custom';            
+        }, timeout + 1750 + 2750);  
+
+        setTimeout(function() {
+            document.getElementById('fed').innerHTML = 'full-stack developer <span>|</span>';            
+            document.getElementById('fed').className = 'type-custom';
+        }, timeout + 1750 + 2750 + 1750);              
+
     },
 
     supportsSVG: function() {

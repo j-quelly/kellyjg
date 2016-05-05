@@ -14,6 +14,11 @@
 1. ```$ grunt serve-dev```
 
 ## Changelog
+- v2.8.17
+	- front-end/full-stack/back-end/ui/ux
+	- add python
+	- update social icons
+	- fixes nav logo animation
 - v2.7.16
 	- public/js/app.js overhaul
 	- fixes resume scroll offset
