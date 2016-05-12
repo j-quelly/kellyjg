@@ -2,7 +2,7 @@ module.exports = (grunt) ->
 	grunt.initConfig
 		pkg: grunt.file.readJSON("package.json") 
 		path: require "path"
-		cb: "v2817"
+		cb: "v3817"
 
 
 		# list our available tasks
@@ -239,6 +239,7 @@ module.exports = (grunt) ->
 				files: {	
 					"build<%= path.sep %>js<%= path.sep %>app<%= cb %>.min.js" : ['public<%= path.sep %>js<%= path.sep %>app.js'],
 					"build<%= path.sep %>js<%= path.sep %>app2<%= cb %>.min.js" : ['public<%= path.sep %>js<%= path.sep %>app2.js'],
+					"build<%= path.sep %>js<%= path.sep %>app3<%= cb %>.min.js" : ['public<%= path.sep %>js<%= path.sep %>app3.js'],
 					"build<%= path.sep %>js<%= path.sep %>lib<%= cb %>.min.js" : ['build<%= path.sep %>js<%= path.sep %>lib.js'],
 				}
 
@@ -280,6 +281,10 @@ module.exports = (grunt) ->
 						{
 							pattern: "script(src='js/app2.js')" 							
 							replacement: "script(src='js/app2.js')" 
+						},
+						{
+							pattern: "script(src='js/app3.js')" 							
+							replacement: "script(src='js/app3.js')" 
 						}						
 					]		
 			build:
@@ -306,6 +311,10 @@ module.exports = (grunt) ->
 						{
 							pattern: "script(src='js/app2.js')" 
 							replacement: "script(src='js/app2.js')" 
+						},
+						{
+							pattern: "script(src='js/app3.js')" 
+							replacement: "script(src='js/app3.js')" 
 						},						
 						{
 							pattern: "link(rel='stylesheet', href='../bower_components/animate.css/animate.css')" 
@@ -328,7 +337,11 @@ module.exports = (grunt) ->
 						{
 							pattern: "app2.js" 
 							replacement: "app2<%= cb %>.min.js" 
-						},						
+						},
+						{
+							pattern: "app3.js" 
+							replacement: "app3<%= cb %>.min.js" 
+						},												
 						{
 							pattern: "lib.js" 
 							replacement: "lib<%= cb %>.min.js" 

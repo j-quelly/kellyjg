@@ -1,9 +1,9 @@
 {
     "name": "kellyjg",
-    "version": "2.8.17",
+    "version": "3.8.17",
     "description": "Vector & Bitmap PLAR",
     "authors": [
-        "Jamie Kelly <jamie@studio174.ca>"
+        "Jamie Kelly <jamie@kellyjg.com>"
     ],
     "homepage": "http://www.kellyjg.com",
     "private": true,

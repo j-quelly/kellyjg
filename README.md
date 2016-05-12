@@ -1,7 +1,7 @@
 # kellyjg
 - Personal website
 
-### Current Version: 2.7.16 
+### Current Version: 3.7.16 
 
 ## Getting Started
 1. ```$ bower install```
@@ -14,6 +14,9 @@
 1. ```$ grunt serve-dev```
 
 ## Changelog
+- v3.8.17
+	- new app design pattern
+	- improves some methods
 - v2.8.17
 	- front-end/full-stack/back-end/ui/ux
 	- add python
