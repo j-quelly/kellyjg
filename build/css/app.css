@@ -3377,6 +3377,7 @@ footer #oj span {
   /**
     * Desktop animations
     */
+  /* uncss:ignore */
   @-webkit-keyframes logo-custom {
     0% {
       opacity: 0;
@@ -3411,6 +3412,7 @@ footer #oj span {
               transform: translate3d(-222px, 0, 0);
     }
   }
+  /* uncss:ignore */
   @-webkit-keyframes bracket-custom {
     0% {
       opacity: 0;

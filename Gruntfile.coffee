@@ -304,18 +304,18 @@ module.exports = (grunt) ->
 							pattern: "script(src='../bower_components/wow/dist/wow.js')" 
 							replacement: "script(src='js/lib.js')" 
 						},
-						{
-							pattern: "script(src='js/app.js')" 
-							replacement: "script(src='js/app.js')" 
-						},
-						{
-							pattern: "script(src='js/app2.js')" 
-							replacement: "script(src='js/app2.js')" 
-						},
-						{
-							pattern: "script(src='js/app3.js')" 
-							replacement: "script(src='js/app3.js')" 
-						},						
+						# {
+						# 	pattern: "script(src='js/app.js')" 
+						# 	replacement: "script(src='js/app.js')" 
+						# },
+						# {
+						# 	pattern: "script(src='js/app2.js')" 
+						# 	replacement: "script(src='js/app2.js')" 
+						# },
+						# {
+						# 	pattern: "script(src='js/app3.js')" 
+						# 	replacement: "script(src='js/app3.js')" 
+						# },						
 						{
 							pattern: "link(rel='stylesheet', href='../bower_components/animate.css/animate.css')" 
 							replacement: "" 
