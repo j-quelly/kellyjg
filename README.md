@@ -1,7 +1,7 @@
 # kellyjg
 - Personal website
 
-### Current Version: 3.8.18 
+### Current Version: 3.8.19
 
 ## Getting Started
 1. ```$ bower install```
@@ -14,6 +14,9 @@
 1. ```$ grunt serve-dev```
 
 ## Changelog
+- v3.8.19
+	- removes uncss task that was causing animation bug
+	- adds comments to app3.js
 - v3.8.18
 	- new app design pattern
 	- improves some methods

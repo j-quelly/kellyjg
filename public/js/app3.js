@@ -1,29 +1,32 @@
-// todo: event listener fallbacks for older browsers // orientation change?
-// todo: comment
-// todo: lint/hint/style guide
+/*
+ * App Class
+ */
 var App = (function() {
 
     /*
-     * Constructor
+     * App Constructor
      */
     var App = function() {
-        // size SVG's
+        // if SVG's are not supported then replace with PNG based on window size
         sizeSVG();
 
         /*
-         * Events 
+         * Events   
          */
         if (window.addEventListener) {
+            // on load handles application prep such as fouc
             window.addEventListener('load', loadApp, false);
+            // on resize applies animations and resizes SVG's
             window.addEventListener('resize', resizeApp, false);
+            // on orientation change applies animations and resizes SVG's
             window.addEventListener('orientationchange', resizeApp, false);
-        } else {            
+        } else {
             window.attachEvent('onload', loadApp);
             window.attachEvent('onresize', resizeApp);
             window.attachEvent('orientationchange', resizeApp);
         }
 
-        // init buttons
+        // init app buttons
         btn('go', 'about', 800, true, fixNavbar);
         btn('resume', 'work-experience', 800, { padding: 95 });
         btn('contact', 'footer', 800, {
@@ -34,8 +37,7 @@ var App = (function() {
             App.prototype.addAnimation);
         btn('nav-logo', 'intro', 800, true);
 
-        // init navbar?
-        // todo: confirm what this is for
+        // binds scroll event listener for displaying primary navigation
         navBar();
 
     };
@@ -45,14 +47,23 @@ var App = (function() {
      */
     App.prototype = (function() {
 
-        // public - check version of IE
-        var oldIEV = function(versions) {
+        /*
+            @name oldIEV 
+            @desc Checks the current user-agent version and returns true if matches array of 
+                  Internet Explorer versions passed to the function.  If no versions are passed
+                  the function will default to predefined versions of IE that are not supported.
+
+            @param {array} browsers - An array of Internet Explorer versions denoted 'MSIE #'
+
+            @returns {boolean} 
+        */
+        var oldIEV = function(browsers) {
             var IE = navigator.appVersion,
-                versions = (versions === undefined ? ['MSIE 9', 'MSIE 8', 'MSIE 7.'] : versions),
+                versions = (browsers === undefined ? ['MSIE 9', 'MSIE 8', 'MSIE 7.'] : browsers),
                 oldIE = false;
 
             for (var i = 0; i < versions.length; i++) {
-                if (IE.indexOf(versions[i]) != -1) {
+                if (IE.indexOf(versions[i]) !== -1) {
                     oldIE = true;
                 }
             }
@@ -60,7 +71,14 @@ var App = (function() {
             return oldIE;
         };
 
-        // public - check if client is safari
+
+        /*
+            @name isSafari 
+            @desc Checks if user-agent is Safari. Used with other methods to apply browser
+                  specific fixes.
+
+            @returns {boolean} 
+        */
         var isSafari = function() {
             var safari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
@@ -72,29 +90,45 @@ var App = (function() {
 
         };
 
-        // public - check if garbage client
+
+        /*
+            @name isGarbage 
+            @desc Get the current version of Internet Explorer
+
+            @returns {int} Version number of IE; 5,6,7,8,9,10,11...
+        */
         var isGarbage = function() {
-            var rv = -1; // Return value assumes failure.
+            // return value assumes failure
+            var rv = -1;
 
             if (navigator.appName === 'Microsoft Internet Explorer') {
                 var ua = navigator.userAgent,
-                    re = new RegExp("MSIE ([0-9]{1,}[\\.0-9]{0,})");
+                    re = new RegExp('MSIE ([0-9]{1,}[\\.0-9]{0,})');
 
                 if (re.exec(ua) !== null) {
                     rv = parseFloat(RegExp.$1);
                 }
 
-            } else if (navigator.appName === "Netscape") {
+            } else if (navigator.appName === 'Netscape') {
                 /// in IE 11 the navigator.appVersion says 'trident'
                 /// in Edge the navigator.appVersion does not say trident
-                if (navigator.appVersion.indexOf('Trident') === -1) rv = 12;
-                else rv = 11;
+                if (navigator.appVersion.indexOf('Trident') === -1) {
+                    rv = 12;
+                } else {
+                    rv = 11;
+                }
             }
 
             return rv;
         };
 
-        // public - get type of device
+
+        /*
+            @name device 
+            @desc Determines what type of device is viewing the application.
+
+            @returns {string} Type of device based on window size.
+        */
         var device = function() {
             // vars
             var wW = window.innerWidth;
@@ -117,12 +151,27 @@ var App = (function() {
             }
         };
 
-        // public - check if the client supports SVG's
+
+        /*
+            @name supportsSVG 
+            @desc Checks if user-agent supports scalable vector graphics
+
+            @returns {boolean} 
+        */
         var supportsSVG = function() {
             return !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect;
         };
 
-        // public - scrollTo Method
+
+        /*
+            @name smoothScrollTo 
+            @desc Scrolls to desired element.
+
+            @param {string} eID - Unique identifier for the element scrolled to.
+            @param {int} duration - Duration of scroll effect.
+            @param {object} options - An object of options to pass to callback.
+            @param {function} callback - A callback function to invoke when method completes.
+        */
         var smoothScrollTo = function(eID, duration, options, callback) {
             if (typeof options === 'undefined') {
                 options = {};
@@ -135,6 +184,7 @@ var App = (function() {
                 document.body.scrollTop = amount;
             }
 
+            // return current Y position
             function position() {
                 return document.documentElement.scrollTop || document.body.parentNode.scrollTop || document.body.scrollTop;
             }
@@ -146,6 +196,8 @@ var App = (function() {
                 currentTime = 0,
                 increment = 20;
             duration = (typeof(duration) === 'undefined') ? 500 : duration;
+
+            // define animateScroll function
             var animateScroll = function() {
                 // increment the time
                 currentTime += increment;
@@ -164,21 +216,34 @@ var App = (function() {
                 }
             };
 
+            // invoke animateScroll function
             animateScroll();
 
         };
 
-        // public method - add animation to elem
-        var addAnimation = function(options) {
-            // todo: should be checking options object...
 
+        /*
+            @name addAnimation 
+            @desc Adds animation class to desired element defined in options object.
+
+            @param {object} options - An object of options to pass to function: elem className & animation class
+        */
+        var addAnimation = function(options) {
+            // add class to desired element
             document.getElementById(options.elem).className = 'animated ' + options.animation;
 
-            // todo: is this correct?
+            // invoke removeClasses method
             App.prototype.removeClasses(options, 3000);
         };
 
-        // public method - remove class from element
+
+        /*
+            @name removeClasses 
+            @desc Removes all classes from desired element defined in options object.
+
+            @param {object} options - An object of options to pass to function. elem
+            @param {int} timeout - Time to wait until class is removed from element.  Helpful for animations.
+        */
         var removeClasses = function(options, timeout) {
             if (typeof timeout === 'undefined') {
                 timeout = 0;
@@ -190,7 +255,13 @@ var App = (function() {
 
         };
 
-        // public - get Y POS
+
+        /*
+            @name currentYPosition 
+            @desc Get the current Y position of the device screen.
+
+            @returns {int} Current Y position of device.
+        */
         var currentYPosition = function() {
 
             // Firefox, Chrome, Opera, Safari
@@ -212,6 +283,15 @@ var App = (function() {
 
         };
 
+        /*
+            @name elmYPosition 
+            @desc Get the Y position of the desired element.
+
+            @param {string} eID - Unique identifier for element
+            @param {options} object - Object of options
+
+            @returns {int} Current Y position of desired element.
+        */
         var elmYPosition = function(eID, options) {
             if (typeof(options) !== 'object') {
                 options = undefined;
@@ -222,7 +302,7 @@ var App = (function() {
                 y = elm.offsetTop - (options !== undefined ? options.padding : 65),
                 node = elm;
 
-            while (node.offsetParent && node.offsetParent != document.body) {
+            while (node.offsetParent && node.offsetParent !== document.body) {
                 node = node.offsetParent;
                 y += node.offsetTop;
             }
@@ -230,6 +310,12 @@ var App = (function() {
             return y;
         };
 
+        /*
+            @name requestAnimFrame 
+            @desc TODO: Not entirely sure what this does yet...
+
+            @returns {object} 
+        */
         var requestAnimFrame = (function() {
             return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
                 window.setTimeout(callback, 1000 / 60);
@@ -258,7 +344,10 @@ var App = (function() {
      * Private methods
      */
 
-    // private - size SVGs if not supported
+    /*
+        @name sizeSVG 
+        @desc Replace SVG's with .png images.
+    */
     function sizeSVG() {
         // if the client does not support SVG's then resize
         if (!App.prototype.supportsSVG()) {
@@ -272,19 +361,19 @@ var App = (function() {
 
                 // 1200 & up
                 if (wW >= 1200) {
-                    node = val + '@3x.png'
+                    node = val + '@3x.png';
                 }
                 // 992px and up
                 else if (wW <= 1199 && wW >= 992) {
-                    node = val + '@3x.png'
+                    node = val + '@3x.png';
                 }
                 // 768px and up
                 else if (wW <= 991 && wW >= 768) {
-                    node = val + '@3x.png'
+                    node = val + '@3x.png';
                 }
                 // mobile
                 else {
-                    node = val + '@1x.png'
+                    node = val + '@1x.png';
                 }
 
             }
@@ -292,13 +381,22 @@ var App = (function() {
 
     }
 
-    // private - size the intro
+    /*
+        @name sizeIntro 
+        @desc Adjusts the height of the introduction panel of application.
+    */
     function sizeIntro() {
         var wH = document.documentElement.clientHeight;
         document.getElementById('intro').style.height = wH + 'px';
     }
 
-    // private - apply intro animations
+
+    /*
+        @name applyAnimations 
+        @desc Applies animations to the introduction logo.
+
+        TODO: this should be improved if possible
+    */
     function applyAnimations() {
         var svg = (App.prototype.supportsSVG() ? true : false),
             safari = (App.prototype.isSafari() ? true : false),
@@ -310,7 +408,7 @@ var App = (function() {
             if (safari === true) {
                 document.getElementById('jk-logo').className = 'animation ' + (desktop === true ? 'sf-logo-custom' : 'sm-logo-custom');
                 document.getElementById('jk-bracket').className = 'animation ' + (desktop === true ? 'sf-bracket-custom' : 'sm-bracket-custom');
-            } else if (garbage) {
+            } else if (garbage === true) {
                 document.getElementById('jk-logo').className = 'animation ' + (desktop === true ? 'sf-logo-custom' : 'sm-logo-custom');
                 document.getElementById('jk-bracket').className = 'animation ' + (desktop === true ? 'sf-bracket-custom' : 'sm-bracket-custom');
             } else {
@@ -321,7 +419,9 @@ var App = (function() {
 
         document.getElementById('fed').className = 'type-custom';
 
-        var timeout = 3000;
+        var timeout = 3000,
+            minDelay = 1750,
+            maxDelay = 2750;
 
         // new animations
         setTimeout(function() {
@@ -331,20 +431,25 @@ var App = (function() {
         setTimeout(function() {
             document.getElementById('fed').innerHTML = 'back-end developer <span>|</span>';
             document.getElementById('fed').className = 'type-custom';
-        }, timeout + 1750);
+        }, timeout + minDelay);
 
         setTimeout(function() {
             document.getElementById('fed').className = 'erase-custom';
-        }, timeout + 1750 + 2750);
+        }, timeout + minDelay + maxDelay);
 
         setTimeout(function() {
             document.getElementById('fed').innerHTML = 'full-stack developer <span>|</span>';
             document.getElementById('fed').className = 'type-custom';
-        }, timeout + 1750 + 2750 + 1750);
+        }, timeout + minDelay + maxDelay + minDelay);
 
     }
 
-    // private - prepare application
+
+    /*
+        @name loadApp 
+        @desc Loads the application: Initializes WOW animations, sizes introduction, applies IE classes
+              prevents FOUC, adds class for javascript support, applies animations to logo.
+    */
     function loadApp() {
         // check if modern browser
         if (!App.prototype.oldIEV(['MSIE 9', 'MSIE 8', 'MSIE 7.'])) {
@@ -356,7 +461,7 @@ var App = (function() {
 
         // apply ieGarbage class when IE9
         if (App.prototype.oldIEV(['MSIE 9'])) {
-            document.documentElement.className = "ieGarbage";
+            document.documentElement.className = 'ieGarbage';
         }
 
         // apply fouc and no-js class
@@ -368,16 +473,27 @@ var App = (function() {
 
     }
 
-    // private - invoke when resizing the application
+
+    /*
+        @name resizeApp 
+        @desc Invokes set of functions when resize event occurs.
+    */
     function resizeApp() {
         // resize svg's
         sizeSVG();
 
+        // apply animations to logo
         applyAnimations();
 
     }
 
-    // private - fixes navbar
+
+    /*
+        @name fixNavBar 
+        @desc Fixes the primary navigation in place and adds animation effect to primary navigation.
+
+        @param {boolean} arg - Fixes nav bar when true.
+    */
     function fixNavBar(arg) {
         var navbar = document.getElementById('navbar'),
             body = document.getElementsByTagName('body')[0];
@@ -390,37 +506,54 @@ var App = (function() {
 
     }
 
-    // private method replaces 4 methods for buttons
+
+    /*
+        @name btn 
+        @desc Binds click event listener to a button, scrolls to desired element and 
+              invokes a callback if passed to function.
+
+        @param {str} elem - Unique identifier of element or first element of specified class name.
+        @param {str} scrollTo - Element to scroll to when click event is fired.
+        @param {int} timeout - Passed to smoothScroll function, see documentation.
+        @param {object} options - Object of optional arguments for callback function.
+        @param {function} cb - Callback function invoked by smoothScrollTo function.  See documentation.
+    */
     function btn(elem, scrollTo, timeout, options, cb) {
-        var btn = document.getElementById(elem) || document.getElementsByClassName(elem)[0];
+        var btnElem = document.getElementById(elem) || document.getElementsByClassName(elem)[0];
 
         if (window.addEventListener) {
-	        btn.addEventListener('click', function(e) {
-	            if (!App.prototype.oldIEV()) {
-	                e.preventDefault();
-	            }
+            btnElem.addEventListener('click', function(e) {
+                if (!App.prototype.oldIEV()) {
+                    e.preventDefault();
+                }
 
-	            App.prototype.smoothScrollTo(scrollTo, timeout, options, cb);
+                App.prototype.smoothScrollTo(scrollTo, timeout, options, cb);
 
-	        }, false);        	
+            }, false);
         } else {
-        	// todo: test that this works and that e arg is not null
-        	btn.attachEvent('onclick', function(e) {
-	            if (!App.prototype.oldIEV()) {
-	                e.preventDefault();
-	            }
+            // todo: test that this works and that e arg is not null
+            btnElem.attachEvent('onclick', function(e) {
+                if (!App.prototype.oldIEV()) {
+                    e.preventDefault();
+                }
 
-	            App.prototype.smoothScrollTo(scrollTo, timeout, options, cb);        		
-        	});
+                App.prototype.smoothScrollTo(scrollTo, timeout, options, cb);
+            });
         }
 
     }
 
-    // private - nav bar
-    function navBar() { // if modern browser
-    	if (window.addEventListener) {
+    /*
+        @name navBar 
+        @desc Displays primary navigation if users has scrolled to desired position.
+
+        TODO: this can be improved to pass an argument for desired position?
+    */
+    function navBar() {
+        // if modern browser
+        if (window.addEventListener) {
             // when the user scrolls to a designated point
-            window.addEventListener("scroll", function() {
+            window.addEventListener('scroll', function() {
                 // vars
                 var scrollDistance = window.innerHeight,
                     scrollY = App.prototype.currentYPosition();
@@ -435,8 +568,8 @@ var App = (function() {
                 }
 
             }, false);
-    	} else {
-            window.attachEvent("onscroll", function() {
+        } else {
+            window.attachEvent('onscroll', function() {
                 // vars
                 var scrollDistance = window.innerHeight,
                     scrollY = App.prototype.currentYPosition();
@@ -451,22 +584,10 @@ var App = (function() {
                 }
 
             });
-    	}
-    }
-
-    // private - fix nav bar
-    function fixNavbar(arg) {
-        var navbar = document.getElementById('navbar'),
-            body = document.getElementsByTagName('body')[0];
-
-        if (arg === true) {
-            navbar.className = 'navbar navbar-default navbar-fixed-top animation';
-        } else {
-            navbar.className = 'navbar navbar-default';
         }
-
     }
 
+    // make class available to global scope
     return App;
 
 })();
@@ -496,13 +617,13 @@ Math.inOutQuintic = function(t, b, c, d) {
 (function(i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
     i[r] = i[r] || function() {
-        (i[r].q = i[r].q || []).push(arguments)
+        (i[r].q = i[r].q || []).push(arguments);
     }, i[r].l = 1 * new Date();
     a = s.createElement(o),
         m = s.getElementsByTagName(o)[0];
     a.async = 1;
     a.src = g;
-    m.parentNode.insertBefore(a, m)
+    m.parentNode.insertBefore(a, m);
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
 ga('create', 'UA-73387302-1', 'auto');

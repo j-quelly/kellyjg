@@ -1,8 +1,10 @@
+# todo: uncss and prefixer are breaking the dist
+
 module.exports = (grunt) ->
 	grunt.initConfig
 		pkg: grunt.file.readJSON("package.json") 
 		path: require "path"
-		cb: "v3818"
+		cb: "v3819"
 
 
 		# list our available tasks
@@ -249,9 +251,8 @@ module.exports = (grunt) ->
 			build:
 				files:
 					"build<%= path.sep %>css<%= path.sep %>app<%= cb %>.min.css": [
-						'build' + '<%= path.sep %>css<%= path.sep %>app.optimized.css'
+						'build' + '<%= path.sep %>css<%= path.sep %>app.css'
 						'!build' + '<%= path.sep %>css<%= path.sep %>app<%= cb %>.min.css'
-						'!build' + '<%= path.sep %>css<%= path.sep %>app.css'
 					]	
 
 
@@ -393,11 +394,11 @@ module.exports = (grunt) ->
 		"copy:images", 
 		"copy:fonts", 
 		"less:prebuild",
-		"postcss:dist", 
 		"string-replace:build", 
 		"jade:compile", 
-		"uncss:build", 
-		"cssmin:build", 
+		# "uncss:build", 
+		"postcss:dist",
+		"cssmin:build",
 		"uglify:build", 
 		"string-replace:postbuild"])
 	grunt.registerTask("vetcss", ["clean:tmp", "less:vet", "postcss:vet", "csslint:tmp"])
