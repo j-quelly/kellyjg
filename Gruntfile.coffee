@@ -4,7 +4,7 @@ module.exports = (grunt) ->
 	grunt.initConfig
 		pkg: grunt.file.readJSON("package.json") 
 		path: require "path"
-		cb: "v3819"
+		cb: "v3919"
 
 
 		# list our available tasks
@@ -17,6 +17,7 @@ module.exports = (grunt) ->
 					]
 					descriptions:
 						"serve-dev": "Boots up server and opens your default browser"
+						"build": "packages website for production"
 
 
 		# runs tasks concurrently				

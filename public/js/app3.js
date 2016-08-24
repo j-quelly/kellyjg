@@ -39,7 +39,6 @@ var App = (function() {
 
         // binds scroll event listener for displaying primary navigation
         navBar();
-
     };
 
     /*
@@ -489,12 +488,12 @@ var App = (function() {
 
 
     /*
-        @name fixNavBar 
+        @name fixNavbar 
         @desc Fixes the primary navigation in place and adds animation effect to primary navigation.
 
         @param {boolean} arg - Fixes nav bar when true.
     */
-    function fixNavBar(arg) {
+    function fixNavbar(arg) {
         var navbar = document.getElementById('navbar'),
             body = document.getElementsByTagName('body')[0];
 
@@ -541,7 +540,57 @@ var App = (function() {
             });
         }
 
+        // bind listener for active class in primary navigation
+        // activePage(scrollTo);
     }
+
+
+    function activePage(elem) {
+        if (window.addEventListener) {
+            // on scroll add active class to primary navigation
+            window.addEventListener('scroll', function() {
+                // vars
+                var currentYPos = App.prototype.currentYPosition() + 42,
+                    elemYPos = App.prototype.elmYPosition(elem),
+                    navBtn = document.querySelector('a[href="#' + elem + '"]');
+
+                console.log('current y pos: ' + currentYPos);
+                // console.log('elem y pos: ' + elemYPos);
+
+                var body = document.body,
+                    html = document.documentElement;
+
+                var height = Math.max(body.scrollHeight, body.offsetHeight,
+                    html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+
+                // console.log('wh: ' + h);
+                // console.log('current y pos: ' + currentYPos);
+
+                // if currentYPos is greater than or equal elemYPos
+                // subtract window height
+
+                // if current Y == elemY
+                // if (currentYPos >= (elemYPos - (h / 1.5))) {
+                if (currentYPos >= elemYPos) {
+                    navBtn.className = 'active';
+                } else {
+                    navBtn.className = '';
+                }
+
+                console.log(height);
+
+
+                if (currentYPos === height) {
+                    alert('bottom');
+                }
+
+            }, false);
+        } else {
+
+        }
+    }
+     
 
     /*
         @name navBar 
