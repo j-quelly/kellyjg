@@ -1,6 +1,9 @@
 /*
  * App Class
  */
+ // todo: improve degredation with try/catch - see js book
+ // todo: improve events - - see js book
+ // todo: improve performance see JSBP pdfs
 var App = (function() {
 
     /*
@@ -13,6 +16,7 @@ var App = (function() {
         /*
          * Events   
          */
+         // todo: this can probably be improved..
         if (window.addEventListener) {
             // on load handles application prep such as fouc
             window.addEventListener('load', loadApp, false);
