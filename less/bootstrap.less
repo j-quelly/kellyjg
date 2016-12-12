@@ -18,7 +18,7 @@
 @import "core/grid.less";
 // @import "core/tables.less";
 @import "core/forms.less";
-// @import "core/buttons.less";
+@import "core/buttons.less";
 // Components
 // @import "components/component-animations.less";
 // @import "components/dropdowns.less";
@@ -40,9 +40,9 @@
 // @import "components/panels.less";
 // @import "components/responsive-embed.less";
 // @import "components/wells.less";
-// @import "components/close.less";
+@import "components/close.less";
 // Components w/ JavaScript
-// @import "components/modals.less";
+@import "components/modals.less";
 // @import "components/tooltip.less";
 // @import "components/popovers.less";
 // @import "components/carousel.less"; 
@@ -89,6 +89,9 @@
     margin: 45px -15px 0 -15px;
 }
 
+.red {
+    outline: solid 1px red;
+}
 
 /* uncss:ignore */
 
@@ -490,6 +493,10 @@ footer {
         span {
             text-transform: uppercase;
         }
+    }
+    #captcha {
+        cursor: pointer;
+        text-decoration: underline;
     }
 }
 
@@ -1012,7 +1019,7 @@ footer {
         #social {
             text-align: left;
         }
-    }
+    }    
 }
 
 
@@ -1201,3 +1208,12 @@ footer {
     display: block !important;
     opacity: 1 !important;
 }
+
+    /* already defined in bootstrap4 */
+    .text-xs-center {
+        text-align: center;
+    }
+
+    .g-recaptcha {
+        display: inline-block;
+    }

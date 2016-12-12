@@ -1,7 +1,7 @@
 # kellyjg
 - Personal website
 
-### Current Version: 3.10.0
+### Current Version: 3.11.0
 
 ## Getting Started
 1. ```$ bower install```
@@ -14,6 +14,8 @@
 1. ```$ grunt serve-dev```
 
 ## Changelog
+- v3.11 12/12/2016
+	- adds recaptcha
 - v3.10
 	- adds lumen
 	- minor information architecture updates

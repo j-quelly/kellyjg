@@ -8,8 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900%7CNoto+Serif:700,400" rel="stylesheet" type="text/css">
     <!-- bower:css-->
     <!-- endbower-->
-    <link rel="stylesheet" href="css/appv3100.min.css">
+    <link rel="stylesheet" href="css/appv3110.min.css">
     <script>document.documentElement.className = 'fouc';    </script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
   </head>
   <body><!--[if lte IE 8]>
     <div class="container">
@@ -288,17 +289,39 @@
         <div class="row">
           <div class="col-lg-8 col-lg-offset-1">
             <div id="contact-info">
-              <p>Interested in working together?<br>Email me at jamie@kellyjg.com</p>
+              <p>Interested in working together?<br>Email me at <span id="captcha" data-toggle="modal" data-target="#recaptcha">[prove you're human]</span></p>
               <div id="social"><a href="https://github.com/studio174" target="_blank" rel="nofollow"><i class="icon icon-github"></i></a><a href="https://ca.linkedin.com/in/jamie-kelly-02652721" target="_blank" rel="nofollow"><i class="icon icon-linkedin"></i></a><a href="https://twitter.com/de__bug" target="_blank" rel="nofollow"><i class="icon icon-twitter">   </i></a></div>
             </div>
           </div>
         </div>
       </div>
     </footer>
+    <div id="recaptcha" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" class="modal fade">
+      <div role="document" class="modal-dialog">
+        <div class="text-xs-center">
+          <div data-callback="forHumansOnly" data-sitekey="6LehlQ4UAAAAAJ8HqM4-7LyKLg7XkoNSoBoXtVEd" class="g-recaptcha"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function forHumansOnly() {
+          var spread = 'jam',
+              badBrowser = 'ie',
+              uri = 'gjyllek',
+              commerce = 'com',
+              letter = spread + badBrowser + '@' + uri.split("").reverse().join("") + '.' + commerce,
+              humansOnly = document.getElementById('captcha');            
+          humansOnly.innerHTML = letter; 
+          $('#recaptcha').modal('toggle');
+      }
+      
+    </script>
     <!-- bower:js-->
-    <script src="js/libv3100.min.js"></script>
+    <script src="js/libv3110.min.js"></script>
     <!-- endbower-->
-    <script src="js/app3v3100.min.js"></script>
+    <script src="js/app3v3110.min.js"></script>
     <!-- livereload-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>
