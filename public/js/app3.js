@@ -1,9 +1,9 @@
 /*
  * App Class
  */
- // todo: improve degredation with try/catch - see js book
- // todo: improve events - - see js book
- // todo: improve performance see JSBP pdfs
+// todo: improve degredation with try/catch - see js book
+// todo: improve events - - see js book
+// todo: improve performance see JSBP pdfs
 var App = (function() {
 
     /*
@@ -16,19 +16,9 @@ var App = (function() {
         /*
          * Events   
          */
-         // todo: this can probably be improved..
-        if (window.addEventListener) {
-            // on load handles application prep such as fouc
-            window.addEventListener('load', loadApp, false);
-            // on resize applies animations and resizes SVG's
-            window.addEventListener('resize', resizeApp, false);
-            // on orientation change applies animations and resizes SVG's
-            window.addEventListener('orientationchange', resizeApp, false);
-        } else {
-            window.attachEvent('onload', loadApp);
-            window.attachEvent('onresize', resizeApp);
-            window.attachEvent('orientationchange', resizeApp);
-        }
+        this.bindEvent('load', loadApp, false);
+        this.bindEvent('resize', resizeApp, false);
+        this.bindEvent('orientationchange', resizeApp, false);
 
         // init app buttons
         btn('go', 'about', 800, true, fixNavbar);
@@ -49,6 +39,19 @@ var App = (function() {
      * Public methods
      */
     App.prototype = (function() {
+
+        /*
+            @name bindEvent 
+            @desc Better event binding with IE-8 fallback
+            @returns {void} 
+        */
+        var bindEvent = function(event, method, flow) {
+            if (window.addEventListener) {
+                window.addEventListener(event, method, flow);
+            } else {
+                window.attachEvent('on' + event, method);
+            }
+        };
 
         /*
             @name oldIEV 
@@ -327,6 +330,7 @@ var App = (function() {
 
         // make methods public
         return {
+            bindEvent: bindEvent,
             oldIEV: oldIEV,
             device: device,
             isGarbage: isGarbage,
@@ -352,6 +356,13 @@ var App = (function() {
         @desc Replace SVG's with .png images.
     */
     function sizeSVG() {
+
+        // console.log('App: ', App);
+        // console.log('this: ', this);
+        // console.log('self: ', self);
+        // console.log('window: ', window);
+        // console.log(window.supportsSVG());
+
         // if the client does not support SVG's then resize
         if (!App.prototype.supportsSVG()) {
             var wW = window.innerWidth,
@@ -523,6 +534,8 @@ var App = (function() {
     */
     function btn(elem, scrollTo, timeout, options, cb) {
         var btnElem = document.getElementById(elem) || document.getElementsByClassName(elem)[0];
+        // console.log('this: ', this);
+        // console.log('self: ', self);   
 
         if (window.addEventListener) {
             btnElem.addEventListener('click', function(e) {
@@ -594,7 +607,7 @@ var App = (function() {
 
         }
     }
-     
+
 
     /*
         @name navBar 

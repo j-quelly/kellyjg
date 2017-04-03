@@ -4,7 +4,8 @@ module.exports = (grunt) ->
 	grunt.initConfig
 		pkg: grunt.file.readJSON("package.json") 
 		path: require "path"
-		cb: "v3111"
+		cb: "v3130"
+		version: "3.13.0"
 
 
 		# list our available tasks
@@ -349,7 +350,22 @@ module.exports = (grunt) ->
 							replacement: "lib<%= cb %>.min.js" 
 						}					
 					]
-
+			versionbump:
+				files:
+					'package.json' : 'package.json',
+					'bower.json' : 'bower.json',
+					'README.md' : 'README.md',
+				options:
+					replacements: [
+						{
+							pattern: /("version": "(\d){1,}\.(\d){1,}\.(\d){1,}")/ig,
+							replacement: '"version": "<%= version %>"'
+						},
+						{
+							pattern: /(Version: (\d){1,}\.(\d){1,}\.(\d){1,})/ig,
+							replacement: 'Version: <%= version %>'
+						},					
+					]	
 
 		# automagically prefix our css
 		postcss:
@@ -401,7 +417,8 @@ module.exports = (grunt) ->
 		"postcss:dist",
 		"cssmin:build",
 		"uglify:build", 
-		"string-replace:postbuild"])
+		"string-replace:postbuild",
+		"string-replace:versionbump"])
 	grunt.registerTask("vetcss", ["clean:tmp", "less:vet", "postcss:vet", "csslint:tmp"])
 
 	# legend
