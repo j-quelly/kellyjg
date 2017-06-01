@@ -1,7 +1,7 @@
 # kellyjg
 - Personal website
 
-### Current Version: 3.13.0
+### Current Version: 3.14.0
 
 ## Getting Started
 1. ```$ bower install```
@@ -14,6 +14,8 @@
 1. ```$ grunt serve-dev```
 
 ## Changelog
+- v3.14.0 5/31/2017
+	- updates work experience
 - v3.13.0 4/2/2017
 	- updates skills and techniques
 - v3.12.0 12/19/2016
