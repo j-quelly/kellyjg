@@ -443,7 +443,7 @@ var App = (function() {
         }, timeout);
 
         setTimeout(function() {
-            document.getElementById('fed').innerHTML = 'back-end developer <span>|</span>';
+            document.getElementById('fed').innerHTML = 'back-end engineer <span>|</span>';
             document.getElementById('fed').className = 'type-custom';
         }, timeout + minDelay);
 
@@ -452,7 +452,7 @@ var App = (function() {
         }, timeout + minDelay + maxDelay);
 
         setTimeout(function() {
-            document.getElementById('fed').innerHTML = 'full-stack developer <span>|</span>';
+            document.getElementById('fed').innerHTML = 'full-stack engineer <span>|</span>';
             document.getElementById('fed').className = 'type-custom';
         }, timeout + minDelay + maxDelay + minDelay);
 

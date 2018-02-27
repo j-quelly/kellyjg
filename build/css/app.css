@@ -3348,6 +3348,9 @@ nav ul li a.active {
   font-size: 14px;
   margin: 0 0 3px 2px;
 }
+#work-experience dd a {
+  color: #5278A2;
+}
 /**
 * Mobile Education
 */
@@ -4072,8 +4075,8 @@ footer #captcha {
   /* uncss:ignore */
   .nav-logo:hover #nav-bracket {
     opacity: 1;
-    -webkit-transform: translate3d(154px, 0, 0);
-            transform: translate3d(154px, 0, 0);
+    -webkit-transform: translate3d(176px, 0, 0);
+            transform: translate3d(176px, 0, 0);
   }
   /* uncss:ignore */
   .nav-logo:hover > h2 {
