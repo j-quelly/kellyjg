@@ -433,7 +433,7 @@ var App = (function() {
 
         document.getElementById('fed').className = 'type-custom';
 
-        var timeout = 3000,
+/*        var timeout = 3000,
             minDelay = 1750,
             maxDelay = 2750;
 
@@ -454,7 +454,7 @@ var App = (function() {
         setTimeout(function() {
             document.getElementById('fed').innerHTML = 'full-stack engineer <span>|</span>';
             document.getElementById('fed').className = 'type-custom';
-        }, timeout + minDelay + maxDelay + minDelay);
+        }, timeout + minDelay + maxDelay + minDelay);*/
 
     }
 

@@ -4,8 +4,8 @@ module.exports = (grunt) ->
 	grunt.initConfig
 		pkg: grunt.file.readJSON("package.json") 
 		path: require "path"
-		cb: "v3170"
-		version: "3.17.0"
+		cb: "v3180"
+		version: "3.18.0"
 
 
 		# list our available tasks
