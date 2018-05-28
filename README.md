@@ -1,7 +1,7 @@
 # kellyjg
 - Personal website
 
-### Current Version: 3.18.0
+### Current Version: 3.19.0
 
 ## Getting Started
 1. ```$ bower install```
