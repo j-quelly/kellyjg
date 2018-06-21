@@ -14,6 +14,8 @@
 1. ```$ grunt serve-dev```
 
 ## Changelog
+- v3.20.0 6/21/2018
+	- updates job title
 - v3.17.0 2/26/208
 	- updates title & job descriptions
 - v3.16.0 12/10/2017
